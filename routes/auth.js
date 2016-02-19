@@ -1,4 +1,4 @@
-var Authenticated = require("./modules/Authenticated.js");
+var Authenticated = require("./modules/authenticated.js");
 
 exports.register = function (server, options, next) {
   server.route([
@@ -9,7 +9,7 @@ exports.register = function (server, options, next) {
         Authenticated(request, function (result) {
           // if already signed in, redirect to your main collection page
           if (result.authenticated) {
-            reply.redirect('/profile/{id}'); // CHANGE-ME
+            reply.redirect('/profile'); // CHANGE-ME
           } else {
             reply.view('auth/signup', {message: request.query.message});
           }
@@ -23,7 +23,7 @@ exports.register = function (server, options, next) {
         Authenticated(request, function (result) {
           // if already signed in, redirect to your main collection page
           if (result.authenticated) {
-            reply.redirect('/profile/{id}'); // CHANGE-ME
+            reply.redirect('/profile'); // CHANGE-ME
           } else {
             reply.view('auth/signin', {message: request.query.message});
           }

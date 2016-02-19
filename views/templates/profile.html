@@ -1,0 +1,19 @@
+<body>
+  <h1>{{{user.email}}}</h1>
+  <ul>
+  {{#each events}}
+  <li>{{this.creator_id}}</li>
+  <li>{{this.partner_id}}</li>
+  <li>{{this.event_time}}</li>
+  <li>{{this.event_type}}</li>
+  {{/each}}</ul>
+
+
+  <form id="addevent">
+    <input type="text" name="time" placeholder="time">
+    <input type="text" name="event" placeholder="event">
+    <input type="submit" name="addevent" class="btn btn-default">
+  </form>
+
+</body>
+<script src="/public/js/auth/events.js"></script>
