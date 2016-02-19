@@ -1,3 +1,5 @@
+var Authenticated = require("./modules/authenticated.js");
+
 exports.register = function(server, options, next) {
   server.route([
     {
@@ -5,22 +7,30 @@ exports.register = function(server, options, next) {
       path: '/profile',
       config: {
         handler: function(request, reply) {
+          Authenticated(request, function (result) {
+            var db = request.server.plugins['hapi-mongodb'].db;
+            var ObjectID = request.server.plugins["hapi-mongodb"].ObjectID;
 
-          var db = request.server.plugins['hapi-mongodb'].db;
-          var ObjectID = request.server.plugins["hapi-mongodb"].ObjectID;
-          var session = request.yar.get('hapi_spotme_session');
+            if (result.authenticated) {
+              var currentUser = ObjectID(result.user_id);
+              db.collection("users").findOne({"_id": currentUser}, function (err, user){
+                if (err) { return reply(err).code(400); }
 
-          var currentUser = ObjectID(session.user_id);
+                if (user === null) {
+                  return reply.view("templates/profile", {authenticated: true, user: null});
+                }
 
-          db.collection("users").findOne({"_id": currentUser}, function (err, user){
-            if (err) { return reply(err).code(400); }
+                db.collection("events").find({"creator_id": currentUser}).toArray(function (error, events){
+                  if (err) { return reply(error).code(400); }
 
-            db.collection("events").find({"creator_id": currentUser}).toArray(function (error, events){
-              if (err) { return reply(error).code(400); }
-
-              return reply.view("templates/profile", {user: user, events: events});
-            });
-          });
+                  var fullName = user.firstName+" "+user.lastName;
+                  return reply.view("templates/profile", {authenticated: true, user: user, events: events, name: fullName});
+                });
+              });
+            } else {
+              return reply.redirect('/');
+            }
+          })
         }
       }
     },

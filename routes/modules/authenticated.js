@@ -17,7 +17,8 @@ module.exports = function(request, callback) {
     } else {
       return callback({
         "authenticated": true,
-        "message": "Authorized"
+        "message": "Authorized",
+        "user_id": session.user_id
       });
     }
   });

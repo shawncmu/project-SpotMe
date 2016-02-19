@@ -45,7 +45,7 @@ server.register(plugins, function(err){
 
   // configure views
   server.views({
-    engines: {html: require('handlebars')},
+    engines: {html: require('ejs')},
     path: Path.join(__dirname, 'views'),
     layout: true,
     layoutPath: Path.join(__dirname, 'views/layouts')

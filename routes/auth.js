@@ -11,7 +11,7 @@ exports.register = function (server, options, next) {
           if (result.authenticated) {
             reply.redirect('/profile'); // CHANGE-ME
           } else {
-            reply.view('auth/signup', {message: request.query.message});
+            reply.view('auth/signup', {authenticated: false, message: request.query.message});
           }
         });
       }
@@ -25,7 +25,7 @@ exports.register = function (server, options, next) {
           if (result.authenticated) {
             reply.redirect('/profile'); // CHANGE-ME
           } else {
-            reply.view('auth/signin', {message: request.query.message});
+            reply.view('auth/signin', {authenticated: false, message: request.query.message});
           }
         });
       }
