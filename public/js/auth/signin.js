@@ -4,7 +4,7 @@ $(document).ready(function () {
       e.preventDefault();
 
       var user = {
-        username: $('#signin [name="username"]').val(),
+        email: $('#signin [name="email"]').val(),
         password: $('#signin [name="password"]').val()
       };
 
@@ -13,7 +13,7 @@ $(document).ready(function () {
         url: "/api/signin",
         data: user,
         success: function(response){
-          window.location.href = "/";
+          window.location.href = "/profile";
         },
         error: function(response){
           console.log(response);
