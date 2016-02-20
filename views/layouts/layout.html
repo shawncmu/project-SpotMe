@@ -25,12 +25,14 @@
         <a class="navbar-brand" href="/">SpotMe</a>
       </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
+<% if (authenticated) { %>
+  <li><a href="#">Todays Spots</a></li>
+  <li><a href="#">Advanced Search</a></li>
+<% } %>
           <% if (authenticated) { %>
             <li><a href="#"><%= name %></a></li>
-            <li><a href="#">Search</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -40,7 +42,12 @@
               </ul>
             </li>
           <% } else { %>
-            <a href="/signin" class="btn btn-default">Sign In</a>
+              <form id="signin">
+                <input type="text" name="email" placeholder="username">
+                <input type="password" name="password" placeholder="password">
+                <input type="submit" name="Sign in" class="btn btn-default">
+              </form>
+              <div id="signin-form-message"></div>
           <% } %>
         </ul>
       </div><!-- /.navbar-collapse -->

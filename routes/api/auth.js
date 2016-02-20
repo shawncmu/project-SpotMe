@@ -43,9 +43,9 @@ exports.register = function(server, options, next) {
             email:    Joi.string().email().max(50).required(),
             //dateOfBirth: Joi.date().required(),
             gender: Joi.string().min(4).max(6).required(),
-            experience: Joi.string().min(2).max(20).required(),
-            height: Joi.number().integer().min(100).max(300).required(),
-            weight: Joi.number().integer().min(50).max(500).required(),
+            //experience: Joi.string().min(2).max(20).required(),
+            //height: Joi.number().integer().min(100).max(300).required(),
+            //weight: Joi.number().integer().min(50).max(500).required(),
             password: Joi.string().min(4).max(20).required()
           }
         }

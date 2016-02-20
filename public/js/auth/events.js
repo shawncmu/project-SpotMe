@@ -26,17 +26,18 @@ $(document).ready(function () {
     $('#searchevent').on('submit', function (e) {
       e.preventDefault();
 
-      var newEvent = {
-        timing: $('#addevent [name="time"]').val(),
-        activity: $('#addevent [name="event"]').val()
+      var findEvent = {
+        activity: $('#searchevent [name="activity"]').val(),
+        location: $('#searchevent [name="location"]').val(),
+        dateTime: $('#searchevent [name="dateTime"]').val()
       };
 
       $.ajax({
         type: "GET",
-        url: "/api/events",
-        data: newEvent,
+        url: "/events",
+        data: findEvent,
         success: function(response){
-          console.log("added");
+          console.log("found");
         },
         error: function(response){
           console.log(response);

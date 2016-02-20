@@ -9,10 +9,10 @@ $(document).ready(function(){
         firstName: $('#signup [name="firstname"]').val(),
         lastName: $('#signup [name="lastname"]').val(),
         //dateOfBirth: $('#signup [name="dob"]').val(),
-        experience: $('#signup [name="experience"]').val(),
+        //experience: $('#signup [name="experience"]').val(),
         gender: $('#signup [name="gender"]').val(),
-        height: $('#signup [name="height"]').val(),
-        weight: $('#signup [name="weight"]').val(),
+        //height: $('#signup [name="height"]').val(),
+        //weight: $('#signup [name="weight"]').val(),
         password: $('#signup [name="password"]').val()
       };
 
@@ -22,7 +22,7 @@ $(document).ready(function(){
         data: user,
         success: function (response) {
           //display welcome modal
-          window.location.href = "/signin?message=Account Created, Please Sign In";
+          window.location.href = "/profile";
         },
         error: function (response) {
           console.log(response);
