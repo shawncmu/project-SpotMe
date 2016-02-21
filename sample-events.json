@@ -1,0 +1,1 @@
+mongoimport --db hapi-SpotMe --collection users --drop --file sample-users.json

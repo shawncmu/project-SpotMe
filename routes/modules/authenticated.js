@@ -1,6 +1,6 @@
 module.exports = function(request, callback) {
   var db = request.server.plugins['hapi-mongodb'].db;
-  var session = request.yar.get('hapi_template_session'); // CHANGE-ME
+  var session = request.yar.get('hapi_spotme_session'); // CHANGE-ME
 
   if (!session) {
     return callback({ "authenticated": false, "message": "Unauthorized" });
@@ -17,7 +17,8 @@ module.exports = function(request, callback) {
     } else {
       return callback({
         "authenticated": true,
-        "message": "Authorized"
+        "message": "Authorized",
+        "user_id": session.user_id
       });
     }
   });
