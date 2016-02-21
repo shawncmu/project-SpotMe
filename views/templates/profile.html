@@ -1,5 +1,6 @@
 <% if (user) { %>
-  <h1><%= user.email %></h1>
+  <h1>Current User: <%= user.email %></h1>
+  <h1>My created events</h1>
   <ul>
     <% events.forEach(function(elem,index) { %>
       <li><%= elem.creator_id %></li>
@@ -9,12 +10,13 @@
     <% }) %>
   </ul>
 
-<h1>ADD</h1>
+<h1>ADD Event</h1>
   <form id="addevent">
     <input type="text" name="time" placeholder="time">
     <input type="text" name="event" placeholder="event">
     <input type="submit" name="addevent" class="btn btn-default">
   </form>
+<h1>My Joined Events</h1>
 <!--<h1>Search</h1>
   <form id="searchevent">
     <input type="text" name="dateTime" placeholder="Date">

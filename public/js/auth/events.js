@@ -34,9 +34,30 @@ $(document).ready(function () {
     });
   };
 
+  var bindJoinEvent = function () {
+    $('.joinevent').on('click', function (e) {
+      e.preventDefault();
+      var selectedEvent = $(this).data("id");
+
+      $.ajax({
+        type: "PUT",
+        url: "/api/joinevent",
+        data: {selectedEvent},
+        success: function(response){
+          console.log("joined");
+          window.location.href = "/profile";
+        },
+        error: function(response){
+          console.log(response);
+        }
+      });
+    });
+  };
+
   var init = function () {
     bindAddEvent();
     bindSearchEvent();
+    bindJoinEvent();
   };
 
   init();
