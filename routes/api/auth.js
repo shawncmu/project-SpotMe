@@ -14,7 +14,7 @@ exports.register = function(server, options, next) {
           var user = request.payload;
 
           // query to find existing user
-          var uniqUserQuery = { $or: [{username: user.username}, {email: user.email}] };
+          var uniqUserQuery = {email: user.email};
 
           db.collection('users').findOne(uniqUserQuery, function(err, userExist){
             if (userExist) {
@@ -38,8 +38,14 @@ exports.register = function(server, options, next) {
         },
         validate: {
           payload: {
+            firstName: Joi.string().min(2).max(20).required(),
+            lastName: Joi.string().min(2).max(20).required(),
             email:    Joi.string().email().max(50).required(),
-            username: Joi.string().min(4).max(20).required(),
+            //dateOfBirth: Joi.date().required(),
+            gender: Joi.string().min(4).max(6).required(),
+            //experience: Joi.string().min(2).max(20).required(),
+            //height: Joi.number().integer().min(100).max(300).required(),
+            //weight: Joi.number().integer().min(50).max(500).required(),
             password: Joi.string().min(4).max(20).required()
           }
         }
@@ -53,7 +59,7 @@ exports.register = function(server, options, next) {
           var db = request.server.plugins['hapi-mongodb'].db;
           var user = request.payload;
 
-          db.collection('users').findOne({ "username": user.username }, function(err, userMongo) {
+          db.collection('users').findOne({ "email": user.email }, function(err, userMongo) {
               if (err) { return reply('Internal MongoDB error', err).code(400); }
 
               if (userMongo === null) {
@@ -75,7 +81,7 @@ exports.register = function(server, options, next) {
                     }
 
                     // Store the Session information in the browser Cookie
-                    request.yar.set('hapi_template_session', newSession); // CHANGE-ME
+                    request.yar.set('hapi_spotme_session', newSession); // CHANGE-ME
 
                     return reply({ "message:": "Authenticated" }).code(200);
                   });
@@ -87,8 +93,8 @@ exports.register = function(server, options, next) {
         },
         validate: {
           payload: {
-            username: Joi.string().required(),
-            password: Joi.string().required()
+            email: Joi.string().email().max(50).required(),
+            password: Joi.string().min(4).max(20).required()
           }
         }
       }
@@ -98,7 +104,7 @@ exports.register = function(server, options, next) {
       path: '/api/signout',
       handler: function(request, reply) {
         var db = request.server.plugins['hapi-mongodb'].db;
-        var session = request.yar.get('hapi_template_session'); // CHANGE-ME
+        var session = request.yar.get('hapi_spotme_session'); // CHANGE-ME
 
         if (!session) {
           return reply({ "message": "Already logged out" }).code(400);
