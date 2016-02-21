@@ -10,11 +10,11 @@ $(document).ready(function(){
         lastName: $('#signup [name="lastname"]').val(),
         gender: $('#signup [name="gender"]').val(),
         password: $('#signup [name="password"]').val(),
-        dateOfBirth: " ",
-        experience: " ",
-        height: " ",
-        weight: " ",
-        memberships: " "
+        dateOfBirth: $('#signup [name="dob"]').val(),
+        experience: "",
+        height: "",
+        weight: "",
+        memberships: ""
       };
 
       $.ajax({
@@ -23,7 +23,9 @@ $(document).ready(function(){
         data: user,
         success: function (response) {
           //display welcome modal
-          window.location.href = "/profile";
+        $('#signin [name="email"]').val(user.email);
+        $('#signin [name="password"]').val(user.password);
+        $("#signin").submit();
         },
         error: function (response) {
           console.log(response);

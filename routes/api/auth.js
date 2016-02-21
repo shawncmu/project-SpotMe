@@ -29,26 +29,27 @@ exports.register = function(server, options, next) {
                 // Store hash in your password DB.
                 db.collection('users').insert(user, function(err, doc) {
                   if (err) { return reply('Internal MongoDB error', err).code(400); }
-
+                  console.log(doc);
                   reply(doc).code(200);
                 });
               });
             });
           });
+        },
+        validate: {
+          payload: {
+            firstName: Joi.string().min(2).max(20).required(),
+            lastName: Joi.string().min(2).max(20).required(),
+            email: Joi.string().email().max(50).required(),
+            dateOfBirth: Joi.string(),
+            gender: Joi.string().min(4).max(6).required(),
+            experience: Joi.empty(),
+            height: Joi.empty(),
+            weight: Joi.empty(),
+            memberships: Joi.empty(),
+            password: Joi.string().min(4).max(20).required()
+          }
         }
-        // validate: {
-        //   payload: {
-        //     firstName: Joi.string().min(2).max(20).required(),
-        //     lastName: Joi.string().min(2).max(20).required(),
-        //     email:    Joi.string().email().max(50).required(),
-        //     //dateOfBirth: Joi.date().required(),
-        //     gender: Joi.string().min(4).max(6).required(),
-        //     //experience: Joi.string().min(2).max(20).required(),
-        //     //height: Joi.number().integer().min(100).max(300).required(),
-        //     //weight: Joi.number().integer().min(50).max(500).required(),
-        //     password: Joi.string().min(4).max(20).required()
-        //   }
-        // }
       }
     },
     {
