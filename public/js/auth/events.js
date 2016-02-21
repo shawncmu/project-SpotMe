@@ -44,7 +44,7 @@ $(document).ready(function () {
         url: "/api/joinevent",
         data: {selectedEvent},
         success: function(response){
-          console.log("joined");
+          //$('#event-joined').modal('show');
           window.location.href = "/profile";
         },
         error: function(response){
@@ -54,10 +54,32 @@ $(document).ready(function () {
     });
   };
 
+  var bindViewProfile = function () {
+    $('.viewprofile').on('click', function (e) {
+      e.preventDefault();
+      var selectedProfile = $(this).data("id");
+      console.log(selectedProfile);
+      $.ajax({
+        type: "GET",
+        url: "/api/viewprofile/"+selectedProfile,
+        success: function(response){
+          console.log(response);
+          //$('#creator-profile').modal('show');
+        },
+        error: function(response){
+          console.log(response);
+        }
+      });
+    });
+  };
+
+
+
   var init = function () {
     bindAddEvent();
     bindSearchEvent();
     bindJoinEvent();
+    bindViewProfile();
   };
 
   init();
