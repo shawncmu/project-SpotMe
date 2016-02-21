@@ -15,10 +15,11 @@ exports.register = function(server, options, next) {
             console.log(creatorProfile);
             db.collection("users").findOne({"_id": creatorProfile}, function (err, user){
                 if (err) { return reply(err).code(400); }
+                console.log(user);
                 var profile = {
-                  firstName: user.first_name,
-                  lastName: user.last_name,
-                  age: user.date_of_birth,
+                  firstName: user.firstName,
+                  lastName: user.lastName,
+                  dateOfBirth: user.dateOfBirth,
                   experience: user.experience || "Not Specified",
                   gender: user.gender,
                   height: user.height || "Not Specified",
