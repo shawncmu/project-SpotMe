@@ -15,6 +15,7 @@ var plugins = [
   { register: require('./routes/static_pages.js')},
   { register: require('./routes/auth.js')},
   { register: require('./routes/profile.js')},
+  { register: require('./routes/editprofile.js')},
   { register: require('./routes/events.js')},
   { register: require('./routes/api/auth.js')},
   { register: require('./routes/api/events.js')},

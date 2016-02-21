@@ -8,12 +8,13 @@ $(document).ready(function(){
         email   : $('#signup [name="email"]').val(),
         firstName: $('#signup [name="firstname"]').val(),
         lastName: $('#signup [name="lastname"]').val(),
-        //dateOfBirth: $('#signup [name="dob"]').val(),
-        //experience: $('#signup [name="experience"]').val(),
         gender: $('#signup [name="gender"]').val(),
-        //height: $('#signup [name="height"]').val(),
-        //weight: $('#signup [name="weight"]').val(),
         password: $('#signup [name="password"]').val()
+        dateOfBirth: "",
+        experience: "",
+        height: "",
+        weight: "",
+        memberships: ""
       };
 
       $.ajax({
