@@ -27,7 +27,8 @@ exports.register = function(server, options, next) {
               creator_id: currentUser,
               partner_id: null,
               event_time: user.timing,
-              event_type: user.activity
+              event_type: user.activity,
+              event_location: "test"
             }
 
             // Now, add the new user into the database

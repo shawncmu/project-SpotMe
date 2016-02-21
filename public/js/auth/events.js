@@ -26,23 +26,12 @@ $(document).ready(function () {
     $('#searchevent').on('submit', function (e) {
       e.preventDefault();
 
-      var findEvent = {
-        activity: $('#searchevent [name="activity"]').val(),
-        location: $('#searchevent [name="location"]').val(),
-        dateTime: $('#searchevent [name="dateTime"]').val()
-      };
+        activity = $('#searchevent [name="activity"]').val();
+        place = $('#searchevent [name="location"]').val();
+        dateAndTime = $('#searchevent [name="dateTime"]').val();
+        console.log(activity, place, dateAndTime);
 
-      $.ajax({
-        type: "GET",
-        url: "/events",
-        data: findEvent,
-        success: function(response){
-          console.log("found");
-        },
-        error: function(response){
-          console.log(response);
-        }
-      });
+        window.location.href = "/events/?activity="+activity+"&place="+place+"&dateAndTime="+dateAndTime;
     });
   };
 
