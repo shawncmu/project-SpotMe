@@ -29,7 +29,6 @@ $(document).ready(function () {
         activity = $('#searchevent [name="activity"]').val();
         place = $('#searchevent [name="location"]').val();
         dateAndTime = $('#searchevent [name="dateTime"]').val();
-        console.log(activity, place, dateAndTime);
 
         window.location.href = "/events/?activity="+activity+"&place="+place+"&dateAndTime="+dateAndTime;
     });

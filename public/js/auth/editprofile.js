@@ -5,28 +5,28 @@ $(document).ready(function(){
 
       var user = {
         email: $('#edituser [name="email"]').val(),
-        firstName: $('#edituser [name="firstname"]').val(),
-        lastName: $('#edituser [name="lastname"]').val(),
+        firstName: $('#edituser [name="firstName"]').val(),
+        lastName: $('#edituser [name="lastName"]').val(),
         dateOfBirth: $('#edituser [name="dob"]').val(),
         experience: $('#edituser [name="experience"]').val(),
         gender: $('#edituser [name="gender"]').val(),
         height: $('#edituser [name="height"]').val(),
         weight: $('#edituser [name="weight"]').val(),
-        memberships: $('#edituser [name="memberships"]').val()
+        memberships: $('#edituser [name="memberships"]').val(),
+        password: $('#edituser [name="password"]').val()
       };
-
+      console.log(user);
       $.ajax({
         method: "PUT",
-        url: '/api/editprofile',
+        url: '/api/editmyprofile',
         data: user,
         success: function (response) {
-          //display welcome modal
           window.location.href = "/profile";
         },
         error: function (response) {
           console.log(response);
           var text = response.responseJSON ? response.responseJSON.message : response.responseText;
-          $('#signup-form-message').text(text);
+         // $('#signup-form-message').text(text);
         }
       });
     });

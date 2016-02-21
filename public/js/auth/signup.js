@@ -9,12 +9,12 @@ $(document).ready(function(){
         firstName: $('#signup [name="firstname"]').val(),
         lastName: $('#signup [name="lastname"]').val(),
         gender: $('#signup [name="gender"]').val(),
-        password: $('#signup [name="password"]').val()
-        dateOfBirth: "",
-        experience: "",
-        height: "",
-        weight: "",
-        memberships: ""
+        password: $('#signup [name="password"]').val(),
+        dateOfBirth: " ",
+        experience: " ",
+        height: " ",
+        weight: " ",
+        memberships: " "
       };
 
       $.ajax({
