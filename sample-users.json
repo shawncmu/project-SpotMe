@@ -1,0 +1,60 @@
+{
+  "first_name":"Shawn",
+  "last_name": "Alwani",
+  "email":"shawn2186@hotmail.com",
+  "date_of_birth":{"$date": 504921600},
+  "gender": "Male",
+  "experience": "Intermediate",
+  "height": 182,
+  "weight": 170,
+  "password": "shawn",
+  "rating": 4.5
+}
+{
+  "first_name":"Gautam",
+  "last_name": "Daswani",
+  "email": "gautam1712@gmail.com",
+  "date_of_birth":{"$date": 610588800},
+  "gender": "Male",
+  "experience": "Beginner",
+  "height": 185,
+  "weight": 180,
+  "password": "gautam",
+  "rating": 3.5
+}
+{
+  "first_name": "Sasha",
+  "last_name":"Alwani",
+  "email": "sasha@gmail.com",
+  "date_of_birth":{"$date": 287020800},
+  "gender": "Female",
+  "experience": "Professional",
+  "height": 150,
+  "weight": 110,
+  "password": "sasha",
+  "rating": 4.0
+}
+{
+  "first_name": "Sherina",
+  "last_name": "Das",
+  "email": "sherina@gmail.com",
+  "date_of_birth":{"$date": 658368000},
+  "gender": "Female",
+  "experience": "Intermediate",
+  "height": 160,
+  "weight": 112,
+  "password": "sherina",
+  "rating": 2.0
+}
+{
+  "first_name": "Vimal",
+  "last_name": "Motwani",
+  "email": "vimal@hotmail.com",
+  "date_of_birth":{"$date": -606355200},
+  "gender": "Male",
+  "experience": "Intermediate",
+  "height": 177,
+  "weight": 169,
+  "password":"vimal",
+  "rating": 4.4
+}
