@@ -1,15 +1,17 @@
 <% if (user) { %>
   <h1>Current User: <%= user.email %></h1>
   <h1>My created events</h1>
-    <% myEvents.forEach(function(elem,index) { %>
-  <ul name=<%= elem._id %>>
-      <li><%= elem.creator_id %></li>
-      <li><%= elem.partner_id %></li>
-      <li><%= elem.event_time %></li>
-      <li><%= elem.event_type %></li>
-      <li><button class="btn btn-danger delete-event" data-id=<%= elem._id %>>Delete Session</button></li>
-  </ul>
-    <% }) %>
+    <div name="my-event-section">
+      <% myEvents.forEach(function(elem,index) { %>
+        <ul name=<%= elem._id %>>
+            <li><%= elem.creator_id %></li>
+            <li><%= elem.partner_id %></li>
+            <li><%= elem.event_time %></li>
+            <li><%= elem.event_type %></li>
+            <li><button class="btn btn-danger delete-event" data-id=<%= elem._id %>>Delete Session</button></li>
+        </ul>
+      <% }) %>
+    </div>
 
 <h1>ADD Event</h1>
   <form id="addevent">
@@ -19,17 +21,17 @@
   </form>
 <h1>My Joined Events</h1>
     <% joinedEvents.forEach(function(elem,index) { %>
-    <ul name=<%= elem._id %>>
-      <li><%= elem.creator_id %></li>
-      <li><%= elem.partner_id %></li>
-      <li><%= elem.event_time %></li>
-      <li><%= elem.event_type %></li>
-      <% if (user._id.toString() === elem.creator_id.toString()) { %>
-        <li><button class="btn btn-danger delete-event" data-id=<%= elem._id %>>Delete Session</button></li>
-      <% } else { %>
-            <li><button class="btn btn-warning unjoin-event" data-id=<%= elem._id %>>Un-Join Session</button></li>
-      <% } %>
-  </ul>
+      <ul name=<%= elem._id %>>
+        <li><%= elem.creator_id %></li>
+        <li><%= elem.partner_id %></li>
+        <li><%= elem.event_time %></li>
+        <li><%= elem.event_type %></li>
+        <% if (user._id.toString() === elem.creator_id.toString()) { %>
+          <li><button class="btn btn-danger delete-event" data-id=<%= elem._id %>>Delete Session</button></li>
+        <% } else { %>
+              <li><button class="btn btn-warning unjoin-event" data-id=<%= elem._id %>>Un-Join Session</button></li>
+        <% } %>
+      </ul>
     <% }) %>
 <!--<h1>Search</h1>
   <form id="searchevent">

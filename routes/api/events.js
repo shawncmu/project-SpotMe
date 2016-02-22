@@ -35,6 +35,7 @@ exports.register = function(server, options, next) {
             // Now, add the new user into the database
             db.collection('events').insert(newEvent, function (err, doc) {
               if (err) { return reply('Internal MongoDB error', err).code(400); }
+              console.log(doc);
               reply(doc).code(200);
             });
           });

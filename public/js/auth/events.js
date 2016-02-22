@@ -1,4 +1,35 @@
 $(document).ready(function () {
+    var bindDeleteEvent = function () {
+    $('.delete-event').off().on('click', function (e) {
+      e.preventDefault();
+
+      var removeEvent = $(this).data("id");
+      $("#delete-modal").modal("show");
+      bindConfirmDeleteEvent(removeEvent);
+
+    });
+  };
+
+  var bindConfirmDeleteEvent = function (removeEvent) {
+    $('#confirm-delete-event').off().on('click', function (e) {
+      e.preventDefault();
+
+      $.ajax({
+        type: "DELETE",
+        url: "/api/events",
+        data: {removeEvent},
+        success: function(response){
+          console.log("Deleted");
+          $("ul[name="+removeEvent+"]").remove();
+          $("#delete-modal").modal("hide");
+        },
+        error: function(response){
+          console.log(response);
+        }
+      });
+    });
+  };
+
   var bindAddEvent = function () {
     $('#addevent').on('submit', function (e) {
       e.preventDefault();
@@ -13,7 +44,11 @@ $(document).ready(function () {
         url: "/api/events",
         data: newEvent,
         success: function(response){
-          console.log("added");
+          console.log("added", response.ops[0]._id);
+          var newli = "<ul name="+ response.ops[0]._id +"><li>"+ response.ops[0].creator_id +"</li><li>"+ response.ops[0].partner_id +"</li><li>"+ response.ops[0].event_time +"</li><li>"+ response.ops[0].event_type +"</li><li><button class=\"btn btn-danger delete-event\" data-id="+ response.ops[0]._id +">Delete Session</button></li></ul>"
+          $("div[name=\"my-event-section\"]").append(newli);
+          bindDeleteEvent();
+
         },
         error: function(response){
           console.log(response);
@@ -86,6 +121,7 @@ $(document).ready(function () {
     bindSearchEvent();
     bindJoinEvent();
     bindViewProfile();
+    bindDeleteEvent();
   };
 
   init();
