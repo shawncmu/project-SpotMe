@@ -36,7 +36,9 @@ $(document).ready(function () {
 
       var newEvent = {
         timing: $('#addevent [name="time"]').val(),
-        activity: $('#addevent [name="event"]').val()
+        date: $('#addevent [name="date"]').val(),
+        location: $('#addevent [name="location"]').val(),
+        activity: $('#addevent [name="activity"]').val()
       };
 
       $.ajax({
