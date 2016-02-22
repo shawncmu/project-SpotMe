@@ -1,19 +1,74 @@
 <% if (user) { %>
 
-<h1>EDIT</h1>
-  <form id="edituser">
-    <input type="email" name="email" placeholder="Email" value=<%= user.email %>>
-    <input type="text" name="firstName" placeholder="First Name" value=<%= user.firstName %>>
-    <input type="text" name="lastName" placeholder="Last Name" value=<%= user.lastName %>>
-    <input type="text" name="dob" placeholder="Date of Birth" value=<%= user.date_of_birth %>>
-    <input type="text" name="experience" placeholder="Experience" value=<%= user.experience %>>
-    <input type="text" name="gender" placeholder="Gender" value=<%= user.gender %>>
-    <input type="text" name="height" placeholder="Height" value=<%= user.height %>>
-    <input type="text" name="weight" placeholder="Weight" value=<%= user.weight %>>
-    <input type="text" name="memberships" placeholder="Memberships" value=<%= user.memberships %>>
-    <input type="text" name="password" placeholder="Verify Password">
-    <input type="submit" name="edituser" class="btn btn-default">
-  </form>
+  <h1>My Profile</h1>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+        <img src=<%= user.image %>>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <form id="edituser">
+          <div class="form-group">
+            <label for="image">Image URL</label>
+            <input type="text" class="form-control" name="image" placeholder="http://spotme.com" value=<%= user.image %>>
+          </div>
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" name="firstName" placeholder="First Name" value=<%= user.firstName %>>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" name="lastName" placeholder="Last Name" value=<%= user.lastName %>>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="email" placeholder="Email" value=<%= user.email %>>
+          </div>
+          <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" class="form-control" name="dob" placeholder="Date of Birth" value=<%= user.date_of_birth %>>
+          </div>
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <!-- <input type="radio" name="gender" placeholder="Gender" value=<%= user.gender %>> -->
+            <select class="form-control">
+              <option>Male</option>
+              <option>Female</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="height">Height</label>
+            <input type="number" class="form-control" name="height" placeholder="Height in cm" value=<%= user.height %>>
+          </div>
+          <div class="form-group">
+            <label for="weight">Weight</label>
+            <input type="number" class="form-control" name="weight" placeholder="Weight in lbs" value=<%= user.weight %>>
+          </div>
+          <div class="form-group">
+            <label for="experience">Experience</label>
+            <!-- <input type="text" name="experience" placeholder="Experience" value=<%= user.experience %>> -->
+            <select class="form-control">
+              <option>Beginner</option>
+              <option>Intermediate</option>
+              <option>Advanced</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="memberships">Gym Memberships</label>
+            <input type="text" class="form-control" name="memberships" placeholder="Memberships" value=<%= user.memberships %>>
+          </div>
+          <div class="form-group">
+            <label for="password">Verify Password</label>
+            <input type="text" class="form-control" name="password" placeholder="Please verify password">
+          </div>
+          <input type="submit" name="edituser" class="btn btn-default">
+        </form>
+      </div>
+    </div>
+  </div>
+
 
 <% } else { %>
   <p>user does not exist</p>
