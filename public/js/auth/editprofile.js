@@ -5,6 +5,7 @@ $(document).ready(function(){
 
       var user = {
         email: $('#edituser [name="email"]').val(),
+        image: $('#edituser [name="image"]').val(),
         firstName: $('#edituser [name="firstName"]').val(),
         lastName: $('#edituser [name="lastName"]').val(),
         dateOfBirth: $('#edituser [name="dob"]').val(),
@@ -15,7 +16,7 @@ $(document).ready(function(){
         memberships: $('#edituser [name="memberships"]').val(),
         password: $('#edituser [name="password"]').val()
       };
-      console.log(user);
+
       $.ajax({
         method: "PUT",
         url: '/api/editmyprofile',

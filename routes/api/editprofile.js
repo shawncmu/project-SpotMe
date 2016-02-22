@@ -16,6 +16,7 @@ exports.register = function(server, options, next) {
 
               var newInfo = {
                 email: request.payload.email,
+                image: request.payload.image,
                 firstName: request.payload.firstName,
                 lastName: request.payload.lastName,
                 dateOfBirth: request.payload.dateOfBirth,
@@ -29,7 +30,7 @@ exports.register = function(server, options, next) {
                 if (err) { return reply(err).code(400); }
 
                 Bcrypt.compare(request.payload.password, user.password, function (error, passed) {
-                    console.log(passed);
+
                   if (passed) {
 
                     if (user.email != request.payload.email) {
