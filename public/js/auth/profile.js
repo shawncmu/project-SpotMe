@@ -10,20 +10,22 @@ $(document).ready(function () {
     });
   };
   var bindConfirmDeleteEvent = function (removeEvent) {
-    $('#confirm-delete-event').on('click', function (e) {
+    $('#confirm-delete-event').off().on('click', function (e) {
       e.preventDefault();
-      console.log(removeEvent);
-      // $.ajax({
-      //   type: "DELETE",
-      //   url: "/api/events",
-      //   data: {removeEvent},
-      //   success: function(response){
-      //     console.log("added");
-      //   },
-      //   error: function(response){
-      //     console.log(response);
-      //   }
-      // });
+
+      $.ajax({
+        type: "DELETE",
+        url: "/api/events",
+        data: {removeEvent},
+        success: function(response){
+          console.log("Deleted");
+          $("ul[name="+removeEvent+"]").remove();
+          $("#delete-modal").modal("hide");
+        },
+        error: function(response){
+          console.log(response);
+        }
+      });
     });
   };
 

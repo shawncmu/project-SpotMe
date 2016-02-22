@@ -70,6 +70,29 @@ exports.register = function(server, options, next) {
           });
         }
       }
+    },
+    {
+      method: 'DELETE',
+      path: '/api/events',
+      config: {
+        handler: function(request, reply) {
+          Authenticated(request, function (result) {
+            if (result.authenticated) {
+              var db = request.server.plugins['hapi-mongodb'].db;
+              var ObjectID = request.server.plugins["hapi-mongodb"].ObjectID;
+              var removeEvent = ObjectID(request.payload.removeEvent);
+
+              db.collection("events").remove({"_id": removeEvent}, function (err, doc) {
+                if (err) { return reply('Internal MongoDB error', err).code(400); }
+
+                  reply(doc).code(200);
+              });
+            } else {
+                return reply.redirect('/');
+            }
+          });
+        }
+      }
     }
   ]);
 
