@@ -1,6 +1,6 @@
 <% if (user) { %>
   <h1>Search Results</h1>
-  <ul>
+<!--   <ul>
     <% events.forEach(function(elem,index) { %>
       <li><%= elem.creator_id %></li>
       <li><%= elem.partner_id %></li>
@@ -8,7 +8,30 @@
       <li><%= elem.event_type %></li>
       <li><% if (user._id.toString() != elem.creator_id.toString()) { %><button class="btn btn-warning joinevent" data-id=<%= elem._id %>>Join</button><% } %> <button class="btn btn-danger viewprofile" data-id=<%= elem.creator_id %>>View Profile</button></li>
     <% }) %>
-  </ul>
+  </ul> -->
+
+<div class="row">
+<% events.forEach(function(elem,index) { %>
+  <div class="col-sm-6 col-md-2">
+    <div class="thumbnail">
+      <img src=<%= elem.creator_image %>>
+      <div class="caption">
+        <h3><%= elem.creator_name %></h3>
+        <p>Rating: <%= elem.creator_rating %></p>
+        <p>Date: <%= elem.event_date %></p>
+        <p>Time: <%= elem.event_time %></p>
+        <p>Workout: <%= elem.event_type %></p>
+        <p>Location: <%= elem.event_location %></p>
+        <p><% if (user._id.toString() != elem.creator_id.toString()) { %><button class="btn btn-warning joinevent" data-id=<%= elem._id %>>Join</button><% } %> <button class="btn btn-danger viewprofile" data-id=<%= elem.creator_id %>>View Profile</button></p>
+      </div>
+    </div>
+  </div>
+  <% }) %>
+</div>
+
+
+
+
 <!--
 <h1>New Search</h1>
   <form class="searchevent2">
@@ -63,3 +86,4 @@
 <% } %>
 
 <script src="/public/js/auth/events.js"></script>
+<link rel="stylesheet" href="/public/css/layouts/events.css">
