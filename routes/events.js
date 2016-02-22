@@ -8,9 +8,10 @@ exports.register = function(server, options, next) {
       config: {
         handler: function(request, reply) {
 
-          var dateFilter = request.query.dateAndTime || /(.*)/;
+          var dateFilter = request.query.date || /(.*)/;
           var locationFilter = request.query.place || /(.*)/;
           var activityFilter = request.query.activity || /(.*)/;
+          var timeFilter = request.query.time || /(.*)/;
 
           Authenticated(request, function (result) {
             var db = request.server.plugins['hapi-mongodb'].db;
@@ -21,11 +22,19 @@ exports.register = function(server, options, next) {
                 if (err) { return reply(err).code(400); }
 
                 var fullName = user.firstName+" "+user.lastName;
+                var image = user.image;
               //number spots needed/spot limit use $inc and have field for avail spots
-                db.collection("events").find({$and: [{"partner_id":null},{"event_time": dateFilter},{"event_location": locationFilter},{"event_type": activityFilter}]}).toArray( function (error, events){
+                db.collection("events").find({$and: [{"partner_id":null},{"event_date": dateFilter},{"event_location": locationFilter},{"event_type": activityFilter},{"event_time": timeFilter}]}).toArray( function (error, events){
                   if (error) { return reply(error).code(400); }
 
-                  return reply.view("templates/events", {authenticated: true, user: user, events: events, name: fullName});
+                  var query = {
+                    dateResult: request.query.date || "All",
+                    timeResult: request.query.time || "All",
+                    locationResult: request.query.place || "All",
+                    activityResult: request.query.activity || "All"
+                  }
+
+                  return reply.view("templates/events", {authenticated: true, user: user, events: events, name: fullName, image: image, query: query});
                 });
               });
             } else {

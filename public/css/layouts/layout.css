@@ -5,3 +5,10 @@
   left: 30%;
   position: absolute;
 }
+
+#nav-image {
+  height: 25px;
+  width: 25px;
+  border: 3px;
+  border-color: white;
+}

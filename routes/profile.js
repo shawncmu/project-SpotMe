@@ -27,7 +27,8 @@ exports.register = function(server, options, next) {
                     if (errors) { return reply(errors).code(400); }
 
                     var fullName = user.firstName+" "+user.lastName;
-                    return reply.view("templates/profile", {authenticated: true, user: user, myEvents: myEvents, joinedEvents: joinedEvents, name: fullName});
+                    var image = user.image;
+                    return reply.view("templates/profile", {authenticated: true, user: user, myEvents: myEvents, joinedEvents: joinedEvents, name: fullName, image: image});
                   });
                 });
               });

@@ -15,12 +15,13 @@ exports.register = function(server, options, next) {
               db.collection("users").findOne({"_id": ObjectID(result.user_id)}, function (err, user){
                 if (err) { return reply(err).code(400); }
                 var fullName = user.firstName+" "+user.lastName;
+                var image = user.image;
 
                 if (user === null) {
                   return reply.view("templates/editprofile", {authenticated: true, user: null});
                 }
 
-                return reply.view("templates/editprofile", {authenticated: true, user: user, name: fullName});
+                return reply.view("templates/editprofile", {authenticated: true, user: user, name: fullName, image: image});
               });
             } else {
                 return reply.redirect('/');

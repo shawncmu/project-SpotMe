@@ -27,7 +27,8 @@
       <% if (authenticated) { %>
             <div id="navform">
             <form id="searchevent">
-              <input type="text" name="dateTime" placeholder="Date">
+              <input type="date" name="date" placeholder="Date">
+              <input type="time" name="time" placeholder="Time">
               <input type="text" name="location" placeholder="Location">
               <input type="text" name="activity" placeholder="Activity">
               <input type="submit" name="searchevent" class="btn btn-default">
@@ -39,7 +40,7 @@
           <% if (authenticated) { %>
             <li><a href="#">Todays Spots</a></li>
             <li><a href="#">Advanced Search</a></li>
-            <li><a href="/profile"><%= name %></a></li>
+            <li><a href="/profile"> <img src=<%= image %> id="nav-image"> <%= name %></a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
               <ul class="dropdown-menu">
