@@ -7,7 +7,7 @@ img {
   text-align: center;
 }
 
-ul li {
+.details {
   display: inline-block;
   list-style-type: none;
 }

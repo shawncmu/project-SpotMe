@@ -13,6 +13,7 @@
 </head>
 <body>
   <nav class="navbar navbar-default">
+
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -24,36 +25,51 @@
         </button>
         <a class="navbar-brand" href="/">SpotMe</a>
       </div>
-      <% if (authenticated) { %>
-            <div id="navform">
-            <form id="searchevent">
-              <input type="date" name="date" placeholder="Date">
-              <input type="time" name="time" placeholder="Time">
-              <input type="text" name="location" placeholder="Location">
-              <input type="text" name="activity" placeholder="Activity">
-              <input type="submit" name="searchevent" class="btn btn-default">
-            </form>
-            </div>
-      <% } %>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <% if (authenticated) { %>
+        <form class="navbar-form navbar-left">
+          <div class="form-group">
+            <button class="btn btn-default form-control" id="today-search">Today's Spots</button>
+          </div>
+        </form>
+        <form id="searchevent" class="navbar-form navbar-left">
+          <div class="form-group">
+            <input type="date" class="form-control" name="date" placeholder="Date">
+          </div>
+          <div class="form-group">
+            <input type="time" class="form-control" name="time" placeholder="Time">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="location" placeholder="Location">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="activity" placeholder="Activity">
+          </div>
+          <button type="submit" class="form-control" name="searchevent" class="btn btn-default">Search</button>
+        </form>
+      <% } %>
         <ul class="nav navbar-nav navbar-right">
           <% if (authenticated) { %>
-            <li><a href="#">Todays Spots</a></li>
-            <li><a href="#">Advanced Search</a></li>
             <li><a href="/profile"> <img src=<%= image %> id="nav-image"> <%= name %></a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="/editprofile">Edit Profile</a></li>
                 <li role="separator" class="divider"></li>
-                <li><button id="signout-btn" class="btn btn-default">Sign Out</button></li>
+                <li><a href="#" id="signout-btn">Sign Out</a></li>
               </ul>
             </li>
           <% } else { %>
-              <form id="signin">
-                <input type="text" name="email" placeholder="username">
-                <input type="password" name="password" placeholder="password">
-                <input type="submit" name="Sign in" class="btn btn-default">
+              <form id="signin" class="navbar-form">
+                <div class="form-group">
+                  <input type="text" class="form-control" name="email" placeholder="username">
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" name="password" placeholder="password">
+                </div>
+                <div class="form-group">
+                  <input type="submit" class="form-control" name="Sign in" class="btn btn-default">
+                </div>
               </form>
               <div id="signin-form-message"></div>
           <% } %>
