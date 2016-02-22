@@ -15,7 +15,8 @@ $(document).ready(function(){
         height: "",
         weight: "",
         memberships: [],
-        rating: 0
+        rating: 0,
+        image: "http://i1.wp.com/www.techrepublic.com/bundles/techrepubliccore/images/icons/standard/icon-user-default.png"
       };
 
       $.ajax({

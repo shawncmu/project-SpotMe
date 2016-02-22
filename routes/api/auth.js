@@ -29,7 +29,6 @@ exports.register = function(server, options, next) {
                 // Store hash in your password DB.
                 db.collection('users').insert(user, function(err, doc) {
                   if (err) { return reply('Internal MongoDB error', err).code(400); }
-                  console.log(doc);
                   reply(doc).code(200);
                 });
               });
@@ -48,7 +47,8 @@ exports.register = function(server, options, next) {
             height: Joi.empty(),
             weight: Joi.empty(),
             memberships: Joi.empty(),
-            rating: Joi.empty()
+            rating: Joi.empty(),
+            image: Joi.string()
           }
         }
       }
