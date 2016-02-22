@@ -5,16 +5,17 @@ $(document).ready(function(){
       $('#signup-form-message').text('');
 
       var user = {
-        email   : $('#signup [name="email"]').val(),
-        firstName: $('#signup [name="firstname"]').val(),
-        lastName: $('#signup [name="lastname"]').val(),
-        gender: $('#signup [name="gender"]').val(),
-        password: $('#signup [name="password"]').val(),
-        dateOfBirth: $('#signup [name="dob"]').val(),
+        firstName: $('#firstname').val(),
+        lastName: $('#lastname').val(),
+        email   : $('#email').val(),
+        password: $('#password').val(),
+        dateOfBirth: $('#dob').val(),
+        gender: $('#genderM').val() || $('#genderF').val(),
         experience: "",
         height: "",
         weight: "",
-        memberships: ""
+        memberships: [],
+        rating: 0
       };
 
       $.ajax({
@@ -22,10 +23,9 @@ $(document).ready(function(){
         url: '/api/signup',
         data: user,
         success: function (response) {
-          //display welcome modal
-        $('#signin [name="email"]').val(user.email);
-        $('#signin [name="password"]').val(user.password);
-        $("#signin").submit();
+          $('#signin [name="email"]').val(user.email);
+          $('#signin [name="password"]').val(user.password);
+          $("#signin").submit();
         },
         error: function (response) {
           console.log(response);

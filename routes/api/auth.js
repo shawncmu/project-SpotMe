@@ -41,13 +41,14 @@ exports.register = function(server, options, next) {
             firstName: Joi.string().min(2).max(20).required(),
             lastName: Joi.string().min(2).max(20).required(),
             email: Joi.string().email().max(50).required(),
-            dateOfBirth: Joi.string(),
+            password: Joi.string().min(4).max(20).required(),
+            dateOfBirth: Joi.date(),
             gender: Joi.string().min(4).max(6).required(),
             experience: Joi.empty(),
             height: Joi.empty(),
             weight: Joi.empty(),
             memberships: Joi.empty(),
-            password: Joi.string().min(4).max(20).required()
+            rating: Joi.empty()
           }
         }
       }

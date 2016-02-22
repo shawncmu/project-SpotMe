@@ -1,5 +1,3 @@
-
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12 col-md-4 infobox">.col-xs-6 .col-md-4</div>
@@ -9,23 +7,36 @@
         <h1>Sign Up</h1>
       </div>
       <form id="signup">
-        <div class="row">
-          <input type="text" name="firstname" placeholder="First Name">
-          <input type="text" name="lastname" placeholder="Last Name">
+        <div class="form-group col-sm-12 col-md-6">
+            <label for="firstname">First Name</label>
+            <input type="text" class="form-control" id="firstname" placeholder="First Name">
         </div>
-        <div class="row">
-          <input type="text" name="email" placeholder="Email">
+        <div class="form-group col-sm-12 col-md-6">
+          <label for="lastname">Last Name</label>
+          <input type="text" class="form-control" id="lastname" placeholder="Last Name">
         </div>
-        <div class="row">
-          <input type="password" name="password" placeholder="Password">
+        <div class="form-group col-sm-12">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="example@gmail.com">
         </div>
-        <div class="row">
-          <input type="text" name="dob" placeholder="Date of Birth">
+        <div class="form-group col-sm-12">
+          <label for="password">Password</label>
+          <input type="text" class="form-control" id="password" placeholder="6 to 10 characters">
         </div>
-        <div class="row">
-          <input type="text" name="gender" placeholder="Gender">
+        <div class="form-group col-sm-12">
+          <label for="dob">Date of Birth</label>
+          <input type="date" class="form-control" id="dob" placeholder="mm/dd/yyyy">
         </div>
-        <div class="row">
+        <div class="form-group radio-inline col-sm-12">
+          <label for="genderM">Gender</label>
+          <label class="radio-inline">
+            <input type="radio" name="gender" id="genderM" value="Male"> Male
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="gender" id="genderF" value="Female"> Female
+          </label>
+        </div>
+        <div class="form-group col-sm-12">
           <input type="submit" name="Sign Up" class="btn btn-default">
           <div id="signup-form-message"></div>
         </div>
@@ -33,22 +44,12 @@
     </div>
   </div>
 
-
-
-
 </div>
-
 
 <script src="/public/js/static_pages/home.js"></script>
 <link rel="stylesheet" href="/public/css/static_pages/home.css">
 <script src="/public/js/auth/signin.js"></script>
 <link rel="stylesheet" href="/public/css/auth/signin.css">
-
-<!--
-    <input type="text" name="experience" placeholder="email">
-    <input type="text" name="height" placeholder="email">
-    <input type="text" name="weight" placeholder="email">
--->
 
 <script src="/public/js/auth/signup.js"></script>
 <link rel="stylesheet" href="/public/css/auth/signup.css">
