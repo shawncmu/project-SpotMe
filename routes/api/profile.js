@@ -17,6 +17,7 @@ exports.register = function(server, options, next) {
                 if (err) { return reply(err).code(400); }
 
                 var profile = {
+                  image: user.image,
                   firstName: user.firstName,
                   lastName: user.lastName,
                   dateOfBirth: user.dateOfBirth,

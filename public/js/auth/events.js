@@ -102,6 +102,8 @@ $(document).ready(function () {
         type: "GET",
         url: "/api/viewprofile/"+selectedProfile,
         success: function(response){
+
+          $("#image-box").attr("src", response.image);
           $("#view-profile [class=modal-title]").text(response.firstName+" "+response.lastName);
           $("#view-profile [name=dateofbirth]").text(response.dateOfBirth);
           $("#view-profile [name=experience]").text(response.experience);
