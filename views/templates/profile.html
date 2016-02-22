@@ -41,16 +41,39 @@
           </form>
         </div>
         <div>
-          <h1>My created events</h1>
+          <h1>My Workout Sessions</h1>
           <div name="my-event-section">
             <% myEvents.forEach(function(elem,index) { %>
-              <ul name=<%= elem._id %>>
+                <div class="media">
+                  <div class="media-left">
+                    <img class="media-object" style="height:100px; width:100px;" src=<%= elem.creator_image %>>
+                    <p>Rating: <%= elem.creator_rating %></p>
+                    <button class="btn btn-danger delete-event" data-id=<%= elem._id %>>Delete Session</button>
+                  </div>
+                  <div class="media-body">
+                      <h3 class="media-heading"><%= elem.event_date %></h3>
+                      <p>Time: <%= elem.event_time %></p>
+                      <p>Workout: <%= elem.event_type %></p>
+                      <p>Location: <%= elem.event_location %></p>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+
+
+
+
+<!--               <ul name=<%= elem._id %>>
                   <li><%= elem.creator_id %></li>
                   <li><%= elem.partner_id %></li>
                   <li><%= elem.event_time %></li>
                   <li><%= elem.event_type %></li>
                   <li><button class="btn btn-danger delete-event" data-id=<%= elem._id %>>Delete Session</button></li>
-              </ul>
+              </ul> -->
             <% }) %>
           </div>
         </div>
