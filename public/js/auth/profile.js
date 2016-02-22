@@ -19,7 +19,7 @@ $(document).ready(function () {
         data: {unjoinEvent},
         success: function(response){
           console.log("Unjoined");
-          $("ul[name="+unjoinEvent+"]").remove();
+          $("div[name="+unjoinEvent+"]").remove();
           $("#unjoin-modal").modal("hide");
         },
         error: function(response){

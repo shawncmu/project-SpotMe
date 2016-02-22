@@ -125,7 +125,7 @@ exports.register = function(server, options, next) {
               var ObjectID = request.server.plugins["hapi-mongodb"].ObjectID;
               var unjoinEvent = ObjectID(request.payload.unjoinEvent);
 
-              db.collection("events").update({"_id": unjoinEvent},{$set:{"partner_id": null}}, function (err, doc) {
+              db.collection("events").update({"_id": unjoinEvent},{$set:{partner_id: null, partner_rating: null, partner_image: null, partner_name: null}}, function (err, doc) {
                 if (err) { return reply('Internal MongoDB error', err).code(400); }
 
                   reply(doc).code(200);
