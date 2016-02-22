@@ -19,6 +19,7 @@ exports.register = function(server, options, next) {
             if (result.authenticated) {
               db.collection("users").findOne({"_id": ObjectID(result.user_id)}, function (err, user){
                 if (err) { return reply(err).code(400); }
+
                 var fullName = user.firstName+" "+user.lastName;
               //number spots needed/spot limit use $inc and have field for avail spots
                 db.collection("events").find({$and: [{"event_time": dateFilter},{"event_location": locationFilter},{"event_type": activityFilter}]}).toArray( function (error, events){

@@ -6,7 +6,7 @@
       <li><%= elem.partner_id %></li>
       <li><%= elem.event_time %></li>
       <li><%= elem.event_type %></li>
-      <li><button class="btn btn-warning joinevent" data-id=<%= elem._id %>>Join</button> <button class="btn btn-danger viewprofile" data-id=<%= elem.creator_id %>>View Profile</button></li>
+      <li><% if (user._id.toString() != elem.creator_id.toString()) { %><button class="btn btn-warning joinevent" data-id=<%= elem._id %>>Join</button><% } %> <button class="btn btn-danger viewprofile" data-id=<%= elem.creator_id %>>View Profile</button></li>
     <% }) %>
   </ul>
 <!--
