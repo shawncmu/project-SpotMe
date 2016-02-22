@@ -3,4 +3,7 @@ img {
   max-width: 300px;
 }
 
-​
+.calender > img {
+  max-height: 90px;
+  max-width: 90px;
+}

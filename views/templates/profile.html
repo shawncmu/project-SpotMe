@@ -1,5 +1,6 @@
 <% if (user) { %>
   <div class="container-fluid">
+
       <div class="col-xs-12 col-md-4">
         <div style="text-align:center">
           <img src=<%= user.image %> class="image-rounded">
@@ -19,6 +20,7 @@
           <li class="list-group-item">Gym Memberships: <%= user.memberships %></li>
         </ul>
       </div>
+
       <div class="col-xs-12 col-md-4">
         <div>
           <h4>New Workout Session</h4>
@@ -41,63 +43,61 @@
           </form>
         </div>
         <div>
-          <h1>My Workout Sessions</h1>
+          <h4>My Workout Sessions</h4>
           <div name="my-event-section">
             <% myEvents.forEach(function(elem,index) { %>
-                <div class="media">
-                  <div class="media-left">
-                    <img class="media-object" style="height:100px; width:100px;" src=<%= elem.creator_image %>>
-                    <p>Rating: <%= elem.creator_rating %></p>
-                    <button class="btn btn-danger delete-event" data-id=<%= elem._id %>>Delete Session</button>
-                  </div>
-                  <div class="media-body">
-                      <h3 class="media-heading"><%= elem.event_date %></h3>
-                      <p>Time: <%= elem.event_time %></p>
-                      <p>Workout: <%= elem.event_type %></p>
-                      <p>Location: <%= elem.event_location %></p>
-                  </div>
+              <div class="newBox col-xs-12">
+                <div class="col-xs-2 col-md-2 calender">
+                  <%= elem.event_date %>
+                </div>
+                <div class="col-xs-6 col-md-6 details">
+                  <p>Time: <%= elem.event_time %></p>
+                  <p>Workout: <%= elem.event_type %></p>
+                  <p>Location: <%= elem.event_location %></p>
+                </div>
+                <div class="col-xs-4 col-md-4 optionbuttons">
+                   <button class="btn btn-danger delete-event" data-id=<%= elem._id %>>Delete Session</button>
                 </div>
               </div>
-
-
-
-
-
-
-
-
-
-<!--               <ul name=<%= elem._id %>>
-                  <li><%= elem.creator_id %></li>
-                  <li><%= elem.partner_id %></li>
-                  <li><%= elem.event_time %></li>
-                  <li><%= elem.event_type %></li>
-                  <li><button class="btn btn-danger delete-event" data-id=<%= elem._id %>>Delete Session</button></li>
-              </ul> -->
             <% }) %>
           </div>
         </div>
       </div>
       <div class="col-xs-12 col-md-4">
-      <h1>My Joined Events</h1>
+      <h4>My Joined Events</h4>
           <% joinedEvents.forEach(function(elem,index) { %>
-            <ul name=<%= elem._id %>>
-              <li><%= elem.creator_id %></li>
-              <li><%= elem.partner_id %></li>
-              <li><%= elem.event_time %></li>
-              <li><%= elem.event_type %></li>
-              <% if (user._id.toString() === elem.creator_id.toString()) { %>
-                <li><button class="btn btn-danger delete-event" data-id=<%= elem._id %>>Delete Session</button></li>
-              <% } else { %>
-                    <li><button class="btn btn-warning unjoin-event" data-id=<%= elem._id %>>Un-Join Session</button></li>
-              <% } %>
-            </ul>
+              <div class="newBox col-xs-12">
+                <div class="col-xs-2 col-md-2 calender">
+                  <% if (user._id.toString() === elem.creator_id.toString()) { %>
+                    <img src=<%= elem.partner_image %>>
+                    <p>Rating: <%= elem.partner_rating %></p>
+                  <% } else { %>
+                    <img src=<%= elem.creator_image %>>
+                    <p>Rating: <%= elem.creator_rating %></p>
+                  <% } %>
+                </div>
+                <div class="col-xs-6 col-md-6 details">
+                  <% if (user._id.toString() === elem.creator_id.toString()) { %>
+                    <p><%= elem.partner_name %></p>
+                  <% } else { %>
+                    <p><%= elem.creator_name %></p>
+                  <% } %>
+                  <p>Date: <%= elem.event_date %></p>
+                  <p>Time: <%= elem.event_time %></p>
+                  <p>Workout: <%= elem.event_type %></p>
+                  <p>Location: <%= elem.event_location %></p>
+                </div>
+                <div class="col-xs-4 col-md-4 optionbuttons">
+                  <% if (user._id.toString() === elem.creator_id.toString()) { %>
+                    <button class="btn btn-danger delete-event" data-id=<%= elem._id %>>Delete Session</button>
+                  <% } else { %>
+                        <button class="btn btn-warning unjoin-event" data-id=<%= elem._id %>>Un-Join Session</button>
+                  <% } %>
+                </div>
+              </div>
           <% }) %>
+          <h4>Pending Rating</h4>
       </div>
-
-
-
-
 
         <div class="modal fade" id="delete-modal">
             <div class="modal-dialog">
@@ -138,7 +138,6 @@
   <% } else { %>
     <p>user does not exist</p>
   <% } %>
-</div>
 
 <script src="/public/js/auth/events.js"></script>
 <script src="/public/js/auth/profile.js"></script>

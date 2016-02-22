@@ -68,17 +68,21 @@ exports.register = function(server, options, next) {
               var ObjectID = request.server.plugins["hapi-mongodb"].ObjectID;
               var currentUser = ObjectID(result.user_id);
               var event_id = ObjectID(request.payload.selectedEvent);
-              db.collection("events").findOne({"_id": event_id}, function(err, matchEvent){
-                if (err) { return reply('Internal MongoDB error', err).code(400); }
-                console.log(matchEvent.partner_id);
-                if (matchEvent.partner_id === null) {
-                  db.collection("events").update({"_id": event_id}, {$set: {partner_id: currentUser}}, function (err, doc) {
-                    if (err) { return reply('Internal MongoDB error', err).code(400); }
-                    reply(doc).code(200);
-                  });
-                } else {
-                  return reply('Error: No spot available', err).code(400);
-                }
+              db.collection("users").findOne({"_id": currentUser}, function (error, joiner){
+                if (error) { return reply('Internal MongoDB error', error).code(400); }
+                db.collection("events").findOne({"_id": event_id}, function(err, matchEvent){
+                  if (err) { return reply('Internal MongoDB error', err).code(400); }
+                  var fullName = joiner.firstName+" "+joiner.lastName;
+
+                  if (matchEvent.partner_id === null) {
+                    db.collection("events").update({"_id": event_id}, {$set: {partner_id: currentUser, partner_rating: joiner.rating, partner_image: joiner.image, partner_name: fullName}}, function (err, doc) {
+                      if (err) { return reply('Internal MongoDB error', err).code(400); }
+                      reply(doc).code(200);
+                    });
+                  } else {
+                    return reply('Error: No spot available', err).code(400);
+                  }
+                });
               });
             } else {
                 return reply.redirect('/');
