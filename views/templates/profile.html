@@ -2,7 +2,7 @@
   <h1>Current User: <%= user.email %></h1>
   <h1>My created events</h1>
   <ul>
-    <% events.forEach(function(elem,index) { %>
+    <% myEvents.forEach(function(elem,index) { %>
       <li><%= elem.creator_id %></li>
       <li><%= elem.partner_id %></li>
       <li><%= elem.event_time %></li>
@@ -17,6 +17,14 @@
     <input type="submit" name="addevent" class="btn btn-default">
   </form>
 <h1>My Joined Events</h1>
+  <ul>
+    <% joinedEvents.forEach(function(elem,index) { %>
+      <li><%= elem.creator_id %></li>
+      <li><%= elem.partner_id %></li>
+      <li><%= elem.event_time %></li>
+      <li><%= elem.event_type %></li>
+    <% }) %>
+  </ul>
 <!--<h1>Search</h1>
   <form id="searchevent">
     <input type="text" name="dateTime" placeholder="Date">

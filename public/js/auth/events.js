@@ -58,7 +58,7 @@ $(document).ready(function () {
     $('.viewprofile').on('click', function (e) {
       e.preventDefault();
       var selectedProfile = $(this).data("id");
-      console.log(selectedProfile);
+
       $.ajax({
         type: "GET",
         url: "/api/viewprofile/"+selectedProfile,

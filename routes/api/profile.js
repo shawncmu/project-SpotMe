@@ -12,10 +12,10 @@ exports.register = function(server, options, next) {
             var db = request.server.plugins['hapi-mongodb'].db;
             var ObjectID = request.server.plugins["hapi-mongodb"].ObjectID;
             var creatorProfile = ObjectID(request.params.selectedProfile);
-            console.log(creatorProfile);
+
             db.collection("users").findOne({"_id": creatorProfile}, function (err, user){
                 if (err) { return reply(err).code(400); }
-                console.log(user);
+
                 var profile = {
                   firstName: user.firstName,
                   lastName: user.lastName,

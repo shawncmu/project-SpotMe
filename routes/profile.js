@@ -20,11 +20,15 @@ exports.register = function(server, options, next) {
                   return reply.view("templates/profile", {authenticated: true, user: null});
                 }
 
-                db.collection("events").find({"creator_id": currentUser}).toArray(function (error, events){
+                db.collection("events").find({$and:[{"creator_id": currentUser}, {"partner_id": null}]}).toArray(function (error, myEvents){
                   if (err) { return reply(error).code(400); }
 
-                  var fullName = user.firstName+" "+user.lastName;
-                  return reply.view("templates/profile", {authenticated: true, user: user, events: events, name: fullName});
+                  db.collection("events").find({$or:[{$and:[{"creator_id": currentUser}, {"partner_id": {$ne: null}}]}, {"partner_id": currentUser}]}).toArray(function (errors, joinedEvents){
+                    if (errors) { return reply(errors).code(400); }
+
+                    var fullName = user.firstName+" "+user.lastName;
+                    return reply.view("templates/profile", {authenticated: true, user: user, myEvents: myEvents, joinedEvents: joinedEvents, name: fullName});
+                  });
                 });
               });
             } else {
