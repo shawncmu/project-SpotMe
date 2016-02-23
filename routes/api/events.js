@@ -13,7 +13,6 @@ exports.register = function(server, options, next) {
             if (result.authenticated) {
               var db = request.server.plugins['hapi-mongodb'].db;
               var user = request.payload;
-
               var ObjectID = request.server.plugins["hapi-mongodb"].ObjectID;
               var session = request.yar.get('hapi_spotme_session');
               var currentUser = ObjectID(session.user_id);
@@ -37,8 +36,9 @@ exports.register = function(server, options, next) {
                     partner_image: null,
                     partner_name: null,
                     event_time: user.timing,
+                    event_duration: user.duration,
                     event_date: user.date,
-                    event_type: user.activity,
+                    event_type: user["activity[]"],
                     event_location: user.location
                   }
 

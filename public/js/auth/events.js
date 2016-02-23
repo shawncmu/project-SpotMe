@@ -38,7 +38,8 @@ $(document).ready(function () {
         timing: $('#addevent [name="time"]').val(),
         date: $('#addevent [name="date"]').val(),
         location: $('#addevent [name="location"]').val(),
-        activity: $('#addevent [name="activity"]').val()
+        activity: $('#addevent [name="activity"]').val(),
+        duration: $('#addevent [name="duration"]').val()
       };
 
       $.ajax({
@@ -61,13 +62,14 @@ $(document).ready(function () {
   };
 
   var bindSearchEvent = function () {
-    $('#searchevent').on('submit', function (e) {
+    $('#searchevent').off().on('submit', function (e) {
       e.preventDefault();
 
         activity = $('#searchevent [name="activity"]').val();
         place = $('#searchevent [name="location"]').val();
         date = $('#searchevent [name="date"]').val();
         time = $('#searchevent [name="time"]').val();
+        if(activity == null) {activity=""};
 
         window.location.href = "/events/?activity="+activity+"&place="+place+"&date="+date+"&time"+time;
     });

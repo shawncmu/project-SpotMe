@@ -36,10 +36,38 @@
               <input type="time" class="form-control" name="time" placeholder="Time">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" name="activity" placeholder="Activity">
+              <select type="text" class="form-control" name="duration" placeholder="Duration">
+                <option selected disabled>Duration</option>
+                <option>30 mins</option>
+                <option>45 mins</option>
+                <option>1 hour</option>
+                <option>1.5 hours</option>
+                <option>2 hours</option>
+                <option>over 2 hours</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <select type="text" multiple class="form-control" name="activity" placeholder="Activity">
+                <option selected disabled>Workout (Hold CTRL for multiple selection)</option>
+                <option>Chest</option>
+                <option>Biceps</option>
+                <option>Triceps</option>
+                <option>Shoulders</option>
+                <option>Upper Back</option>
+                <option>Lower Back</option>
+                <option>Legs</option>
+              </select>
             </div>
             <div class="form-group">
               <input type="text" class="form-control" name="location" placeholder="Location">
+<!--                 <option>Chest</option>
+                <option>Biceps</option>
+                <option>Triceps</option>
+                <option>Shoulders</option>
+                <option>Upper Back</option>
+                <option>Lower Back</option>
+                <option>Legs</option>
+              </select> -->
             </div>
             <div class="form-group">
               <input type="submit" name="addevent" class="btn btn-default">
@@ -58,6 +86,7 @@
                   </div>
                   <div class="col-xs-6 col-md-6 details">
                     <p>Time: <%= elem.event_time %></p>
+                    <p>Duration: <%= elem.event_duration %></p>
                     <p>Workout: <%= elem.event_type %></p>
                     <p>Location: <%= elem.event_location %></p>
                   </div>
@@ -92,6 +121,7 @@
                   <% } %>
                   <p>Date: <%= elem.event_date %></p>
                   <p>Time: <%= elem.event_time %></p>
+                  <p>Duration: <%= elem.event_duration %></p>
                   <p>Workout: <%= elem.event_type %></p>
                   <p>Location: <%= elem.event_location %></p>
                 </div>

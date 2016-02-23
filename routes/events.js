@@ -24,7 +24,7 @@ exports.register = function(server, options, next) {
                 var fullName = user.firstName+" "+user.lastName;
                 var image = user.image;
               //number spots needed/spot limit use $inc and have field for avail spots
-                db.collection("events").find({$and: [{"partner_id":null},{"event_date": dateFilter},{"event_location": locationFilter},{"event_type": activityFilter},{"event_time": timeFilter}]}).toArray( function (error, events){
+                db.collection("events").find({$and: [{"partner_id":null},{"event_date": dateFilter},{"event_location": locationFilter},{"event_type": {$in:[activityFilter]}},{"event_time": timeFilter}]}).toArray( function (error, events){
                   if (error) { return reply(error).code(400); }
 
                   var query = {
