@@ -19,9 +19,16 @@ img {
 .details {
   display: inline-block;
   list-style-type: none;
+  color: white;
+  font-size: 150%;
 }
 
 .transparent{
   background:rgba(255,255,255,0.7);
   border-radius: 10px;
+}
+
+.results {
+  color: white;
+  font-size: 200%;
 }

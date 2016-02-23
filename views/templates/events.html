@@ -2,12 +2,12 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-xs-12">
-        <p>Showing Results For</p>
+        <p class="results">Showing Results For</p>
         <ul>
-          <li class="details">Date: <%= query.dateResult %></li>
-          <li class="details">Time: <%= query.timeResult %></li>
-          <li class="details">Location: <%= query.locationResult %></li>
-          <li class="details">Activity: <%= query.activityResult %></li>
+          <li class="details">Date: <span style="color:orange;"><%= query.dateResult %></span>&nbsp|&nbsp</li>
+          <li class="details">Time: <span style="color:orange;"><%= query.timeResult %></span>&nbsp|&nbsp</li>
+          <li class="details">Location: <span style="color:orange;"><%= query.locationResult %></span>&nbsp|&nbsp</li>
+          <li class="details">Activity: <span style="color:orange;"><%= query.activityResult %></span></li>
         </ul>
       </div>
     </div>
