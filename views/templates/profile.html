@@ -2,28 +2,31 @@
   <div class="container-fluid">
 
       <div class="col-xs-12 col-md-4">
-        <div style="text-align:center">
-          <img src=<%= user.image %> class="img-rounded">
+      <div class="transparent centering">
+        <div id="name-header">
+          <h3><%= user.firstName %> <%= user.lastName %></h3>
         </div>
-        <div>
-          <p style="text-align:center"><%= user.firstName %> <%= user.lastName %></p>
+        <div style="text-align:center">
+          <img src=<%= user.image %> class="img-rounded" id="mainImg">
         </div>
         <div>
           <p style="text-align:center">Rating: <%= user.rating %></p>
         </div>
-        <ul class="list-group" style="width:300px;">
-          <li class="list-group-item">Email: <%= user.email %></li>
-          <li class="list-group-item">Date of Birth: <%= user.dateOfBirth %></li>
-          <li class="list-group-item">Gender: <%= user.gender %></li>
-          <li class="list-group-item"> Height: <%= user.height %></li>
-          <li class="list-group-item">Weight: <%= user.weight %></li>
-          <li class="list-group-item">Experience: <%= user.experience %></li>
-          <li class="list-group-item">Gym Memberships: <%= user.memberships %></li>
-        </ul>
+        <div class="personal-stats-holder>">
+          <div class="personal-stats"><b>Email</b><br> <%= user.email %></div>
+          <div class="personal-stats"><b>Date of Birth</b><br> <%= user.dateOfBirth %></div>
+          <div class="personal-stats"><b>Gender</b><br> <%= user.gender %></div>
+          <div class="personal-stats"><b>Height</b><br> <%= user.height %></div>
+          <div class="personal-stats"><b>Weight</b><br> <%= user.weight %></div>
+          <div class="personal-stats"><b>Experience</b><br> <%= user.experience %></div>
+          <div class="personal-stats"><b>Gym Memberships</b><br> <%= user.memberships %></div>
+        </div>
+        </div>
       </div>
 
       <div class="col-xs-12 col-md-4">
-        <div>
+        <div class="row">
+        <div class="transparent centering-middle-top">
           <h4>New Workout Session</h4>
           <form id="addevent">
             <div class="form-group">
@@ -43,28 +46,32 @@
             </div>
           </form>
         </div>
-        <div>
-          <h4>My Workout Sessions</h4>
-          <div name="my-event-section">
-            <% myEvents.forEach(function(elem,index) { %>
-              <div class="newBox col-xs-12" name=<%= elem._id %>>
-                <div class="col-xs-2 col-md-2 calender">
-                  <%= elem.event_date %>
+        </div>
+        <div class="row">
+          <div class="transparent centering-middle-bottom">
+            <h4>My Workout Sessions</h4>
+            <div name="my-event-section">
+              <% myEvents.forEach(function(elem,index) { %>
+                <div class="newBox col-xs-12" name=<%= elem._id %>>
+                  <div class="col-xs-2 col-md-2 calender">
+                    <%= elem.event_date %>
+                  </div>
+                  <div class="col-xs-6 col-md-6 details">
+                    <p>Time: <%= elem.event_time %></p>
+                    <p>Workout: <%= elem.event_type %></p>
+                    <p>Location: <%= elem.event_location %></p>
+                  </div>
+                  <div class="col-xs-4 col-md-4 optionbuttons">
+                     <button class="btn btn-danger delete-event" data-id=<%= elem._id %>>Delete Session</button>
+                  </div>
                 </div>
-                <div class="col-xs-6 col-md-6 details">
-                  <p>Time: <%= elem.event_time %></p>
-                  <p>Workout: <%= elem.event_type %></p>
-                  <p>Location: <%= elem.event_location %></p>
-                </div>
-                <div class="col-xs-4 col-md-4 optionbuttons">
-                   <button class="btn btn-danger delete-event" data-id=<%= elem._id %>>Delete Session</button>
-                </div>
-              </div>
-            <% }) %>
+              <% }) %>
+            </div>
           </div>
         </div>
       </div>
       <div class="col-xs-12 col-md-4">
+      <div class="row transparent centering-right-top">
       <h4>My Joined Events</h4>
           <% joinedEvents.forEach(function(elem,index) { %>
               <div class="newBox col-xs-12" name=<%= elem._id %>>
@@ -97,7 +104,10 @@
                 </div>
               </div>
           <% }) %>
+        </div>
+        <div class="row transparent centering-right-top">
           <h4>Pending Rating</h4>
+        </div>
       </div>
 
         <div class="modal fade" id="delete-modal">
