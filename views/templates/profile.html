@@ -89,20 +89,20 @@
               <% myEvents.forEach(function(elem,index) { %>
                 <div class="newBox col-xs-12" name=<%= elem._id %>>
                   <div class="col-xs-2 col-md-2 calender">
-                    <div class="year-style"><%= elem.event_date.getFullYear() %></div>
-                    <h1 class="day-style"><%= elem.event_date.getDate() %></h1><br>
-                    <% if (elem.event_date.getMonth()===0) { %><p class="date-style">Jan</p><br> <% } %>
-                    <% if (elem.event_date.getMonth()===1) { %><p class="date-style">Feb</p><br> <% } %>
-                    <% if (elem.event_date.getMonth()===2) { %><p class="date-style">Mar</p><br> <% } %>
-                    <% if (elem.event_date.getMonth()===3) { %><p class="date-style">Apr</p><br> <% } %>
-                    <% if (elem.event_date.getMonth()===4) { %><p class="date-style">May</p><br> <% } %>
-                    <% if (elem.event_date.getMonth()===5) { %><p class="date-style">Jun</p><br> <% } %>
-                    <% if (elem.event_date.getMonth()===6) { %><p class="date-style">Jul</p><br> <% } %>
-                    <% if (elem.event_date.getMonth()===7) { %><p class="date-style">Aug</p><br> <% } %>
-                    <% if (elem.event_date.getMonth()===8) { %><p class="date-style">Sep</p><br> <% } %>
-                    <% if (elem.event_date.getMonth()===9) { %><p class="date-style">Oct</p><br> <% } %>
-                    <% if (elem.event_date.getMonth()===10) { %><p class="date-style">Nov</p><br> <% } %>
-                    <% if (elem.event_date.getMonth()===11) { %><p class="date-style">Dec</p><br> <% } %>
+                    <div class="year-style"><%= new Date(elem.event_date).getFullYear() %></div>
+                    <h1 class="day-style"><%= new Date(elem.event_date).getDate() %></h1><br>
+                    <% if (new Date(elem.event_date).getMonth()===0) { %><p class="date-style">Jan</p><br> <% } %>
+                    <% if (new Date(elem.event_date).getMonth() ===1) { %><p class="date-style">Feb</p><br> <% } %>
+                    <% if (new Date(elem.event_date).getMonth() ===2) { %><p class="date-style">Mar</p><br> <% } %>
+                    <% if (new Date(elem.event_date).getMonth() ===3) { %><p class="date-style">Apr</p><br> <% } %>
+                    <% if (new Date(elem.event_date).getMonth() ===4) { %><p class="date-style">May</p><br> <% } %>
+                    <% if (new Date(elem.event_date).getMonth() ===5) { %><p class="date-style">Jun</p><br> <% } %>
+                    <% if (new Date(elem.event_date).getMonth() ===6) { %><p class="date-style">Jul</p><br> <% } %>
+                    <% if (new Date(elem.event_date).getMonth() ===7) { %><p class="date-style">Aug</p><br> <% } %>
+                    <% if (new Date(elem.event_date).getMonth() ===8) { %><p class="date-style">Sep</p><br> <% } %>
+                    <% if (new Date(elem.event_date).getMonth() ===9) { %><p class="date-style">Oct</p><br> <% } %>
+                    <% if (new Date(elem.event_date).getMonth() ===10) { %><p class="date-style">Nov</p><br> <% } %>
+                    <% if (new Date(elem.event_date).getMonth() ===11) { %><p class="date-style">Dec</p><br> <% } %>
                   </div>
                   <div class="col-xs-6 col-md-6 details">
                     <p>Time: <%= elem.event_time %></p>

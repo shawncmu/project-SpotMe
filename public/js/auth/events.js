@@ -47,8 +47,23 @@ $(document).ready(function () {
         url: "/api/events",
         data: newEvent,
         success: function(response){
+          if (new Date(response.ops[0].event_date).getMonth()===0) { var month="Jan"};
+          if (new Date(response.ops[0].event_date).getMonth()===1) { var month="Feb"};
+          if (new Date(response.ops[0].event_date).getMonth()===2) { var month="Mar"};
+          if (new Date(response.ops[0].event_date).getMonth()===3) { var month="Apr"};
+          if (new Date(response.ops[0].event_date).getMonth()===4) { var month="May"};
+          if (new Date(response.ops[0].event_date).getMonth()===5) { var month="Jun"};
+          if (new Date(response.ops[0].event_date).getMonth()===6) { var month="Jul"};
+          if (new Date(response.ops[0].event_date).getMonth()===7) { var month="Aug"};
+          if (new Date(response.ops[0].event_date).getMonth()===8) { var month="Sep"};
+          if (new Date(response.ops[0].event_date).getMonth()===9) { var month="Oct"};
+          if (new Date(response.ops[0].event_date).getMonth()===10) { var month="Nov"};
+          if (new Date(response.ops[0].event_date).getMonth()===11) { var month="Dec"};
+          var year = new Date(response.ops[0].event_date).getFullYear();
+          var day = new Date(response.ops[0].event_date).getDate();
+          console.log(day, month, year);
 
-          var newli = "<div class=\"newBox col-xs-12\" name="+response.ops[0]._id+"><div class=\"col-xs-2 col-md-2 calender\">"+response.ops[0].event_date+"</div><div class=\"col-xs-6 col-md-6 details\"><p>Time:" +response.ops[0].event_time+"</p><p>Duration:"+response.ops[0].event_duration+"</p><p>Workout:"+ response.ops[0].event_type+"</p><p>Location:"+ response.ops[0].event_location+"</p></div><div class=\"col-xs-4 col-md-4 optionbuttons\"><button class=\"btn btn-danger delete-event\" data-id="+response.ops[0]._id+">Delete Session</button></div></div>"
+          var newli = "<div class=\"newBox col-xs-12\" name="+response.ops[0]._id+"><div class=\"col-xs-2 col-md-2 calender\"><div class=\"year-style\">"+year+"</div><h1 class=\"day-style\">"+day+"</h1><br><p class=\"date-style\">"+month+"</p><br></div><div class=\"col-xs-6 col-md-6 details\"><p>Time:" +response.ops[0].event_time+"</p><p>Duration:"+response.ops[0].event_duration+"</p><p>Workout:"+ response.ops[0].event_type+"</p><p>Location:"+ response.ops[0].event_location+"</p></div><div class=\"col-xs-4 col-md-4 optionbuttons\"><button class=\"btn btn-danger delete-event\" data-id="+response.ops[0]._id+">Delete Session</button></div></div>"
 
           $("div[name=\"my-event-section\"]").append(newli);
           bindDeleteEvent();
