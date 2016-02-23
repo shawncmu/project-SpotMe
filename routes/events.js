@@ -8,7 +8,10 @@ exports.register = function(server, options, next) {
       config: {
         handler: function(request, reply) {
 
-          var dateFilter = request.query.date || /(.*)/;
+          var dateParam = request.query.date ? new Date(request.query.date) : new Date();
+          var startDate = new Date(dateParam.getTime()-43200000);
+          var endDate = new Date(dateParam.getTime() + 86400000);
+
           var locationFilter = request.query.place;
           var activityFilter = request.query.activity || /(.*)/;
           var timeFilter = request.query.time || /(.*)/;
@@ -23,8 +26,8 @@ exports.register = function(server, options, next) {
 
                 var fullName = user.firstName+" "+user.lastName;
                 var image = user.image;
-              //number spots needed/spot limit use $inc and have field for avail spots
-                db.collection("events").find({$and: [{"partner_id":null},{"event_date": dateFilter},{"event_location": {$regex: locationFilter+".*"}},{"event_type": {$in:[activityFilter]}},{"event_time": timeFilter}]}).toArray( function (error, events){
+
+                db.collection("events").find({$and: [{"partner_id":null},{"event_date": {$gte: startDate, $lte: endDate}},{"event_location": {$regex: locationFilter+".*"}},{"event_type": {$in:[activityFilter]}},{"event_time": timeFilter}]}).toArray( function (error, events){
                   if (error) { return reply(error).code(400); }
 
                   var query = {

@@ -37,7 +37,7 @@ exports.register = function(server, options, next) {
                     partner_name: null,
                     event_time: user.timing,
                     event_duration: user.duration,
-                    event_date: user.date,
+                    event_date: new Date(user.date),
                     event_type: user["activity[]"],
                     event_location: user.location
                   }

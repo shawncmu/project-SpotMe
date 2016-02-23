@@ -62,7 +62,9 @@
               <select type="text" class="form-control" name="location" placeholder="Location">
                 <option selected disabled>Location</option>
                 <% locations.forEach(function (elem, index) { %>
+                  <% if (elem.branch) { %>
                     <option><%= elem.brand %> - <%= elem.branch %></option>
+                  <% } %>
                 <% }); %>
                 </select>
             </div>
