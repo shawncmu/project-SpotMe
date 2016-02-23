@@ -20,8 +20,11 @@ exports.register = function(server, options, next) {
                 if (user === null) {
                   return reply.view("templates/editprofile", {authenticated: true, user: null});
                 }
+                db.collection("locations").find({}).toArray(function (nope, allLocations){
+                  if (nope) { return reply(nope).code(400); }
 
-                return reply.view("templates/editprofile", {authenticated: true, user: user, name: fullName, image: image});
+                  return reply.view("templates/editprofile", {authenticated: true, user: user, name: fullName, image: image, locations: allLocations});
+                });
               });
             } else {
                 return reply.redirect('/');

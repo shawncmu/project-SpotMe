@@ -59,15 +59,12 @@
               </select>
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" name="location" placeholder="Location">
-<!--                 <option>Chest</option>
-                <option>Biceps</option>
-                <option>Triceps</option>
-                <option>Shoulders</option>
-                <option>Upper Back</option>
-                <option>Lower Back</option>
-                <option>Legs</option>
-              </select> -->
+              <select type="text" class="form-control" name="location" placeholder="Location">
+                <option selected disabled>Location</option>
+                <% locations.forEach(function (elem, index) { %>
+                    <option><%= elem.brand %> - <%= elem.branch %></option>
+                <% }); %>
+                </select>
             </div>
             <div class="form-group">
               <input type="submit" name="addevent" class="btn btn-default">

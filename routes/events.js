@@ -9,7 +9,7 @@ exports.register = function(server, options, next) {
         handler: function(request, reply) {
 
           var dateFilter = request.query.date || /(.*)/;
-          var locationFilter = request.query.place || /(.*)/;
+          var locationFilter = request.query.place;
           var activityFilter = request.query.activity || /(.*)/;
           var timeFilter = request.query.time || /(.*)/;
 
@@ -24,7 +24,7 @@ exports.register = function(server, options, next) {
                 var fullName = user.firstName+" "+user.lastName;
                 var image = user.image;
               //number spots needed/spot limit use $inc and have field for avail spots
-                db.collection("events").find({$and: [{"partner_id":null},{"event_date": dateFilter},{"event_location": locationFilter},{"event_type": {$in:[activityFilter]}},{"event_time": timeFilter}]}).toArray( function (error, events){
+                db.collection("events").find({$and: [{"partner_id":null},{"event_date": dateFilter},{"event_location": {$regex: locationFilter+".*"}},{"event_type": {$in:[activityFilter]}},{"event_time": timeFilter}]}).toArray( function (error, events){
                   if (error) { return reply(error).code(400); }
 
                   var query = {
@@ -33,8 +33,11 @@ exports.register = function(server, options, next) {
                     locationResult: request.query.place || "All",
                     activityResult: request.query.activity || "All"
                   }
+                  db.collection("locations").find({}).toArray(function (nope, allLocations){
+                    if (nope) { return reply(nope).code(400); }
 
-                  return reply.view("templates/events", {authenticated: true, user: user, events: events, name: fullName, image: image, query: query});
+                    return reply.view("templates/events", {authenticated: true, user: user, events: events, name: fullName, image: image, query: query, locations: allLocations});
+                  });
                 });
               });
             } else {

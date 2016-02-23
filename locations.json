@@ -1,0 +1,35 @@
+{
+  "brand":"California Fitness",
+  "branch": "Tsim Sha Tsui",
+  "address":" Nathan Road",
+  "contact": "23456789",
+  "hours": "9am - 5pm"
+}
+{
+  "brand":"California Fitness",
+  "branch": "Central",
+  "address":"Queens Road",
+  "contact": "23456789",
+  "hours": "9am - 5pm"
+}
+{
+  "brand":"Physical Fitness",
+  "branch": "Central",
+  "address":"Queens Road",
+  "contact": "23456789",
+  "hours": "9am - 5pm"
+}
+{
+  "brand":"Physical Fitness",
+  "branch": "Admiralty",
+  "address":"Queens Road",
+  "contact": "23456789",
+  "hours": "9am - 5pm"
+}
+{
+  "brand":"UP Fitness",
+  "branch": "Central",
+  "address":"Queens Road",
+  "contact": "23456789",
+  "hours": "9am - 5pm"
+}

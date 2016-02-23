@@ -69,7 +69,8 @@ $(document).ready(function () {
         place = $('#searchevent [name="location"]').val();
         date = $('#searchevent [name="date"]').val();
         time = $('#searchevent [name="time"]').val();
-        if(activity == null) {activity=""};
+        if(activity == null) {activity = ""};
+        if(place == null) {place = ""};
 
         window.location.href = "/events/?activity="+activity+"&place="+place+"&date="+date+"&time"+time;
     });

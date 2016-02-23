@@ -28,7 +28,13 @@ exports.register = function(server, options, next) {
 
                     var fullName = user.firstName+" "+user.lastName;
                     var image = user.image;
-                    return reply.view("templates/profile", {authenticated: true, user: user, myEvents: myEvents, joinedEvents: joinedEvents, name: fullName, image: image});
+
+                    db.collection("locations").find({}).toArray(function (nope, allLocations){
+                      if (nope) { return reply(nope).code(400); }
+
+                      return reply.view("templates/profile", {authenticated: true, user: user, myEvents: myEvents, joinedEvents: joinedEvents, name: fullName, image: image, locations: allLocations});
+                    });
+
                   });
                 });
               });
