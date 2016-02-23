@@ -20,7 +20,7 @@ exports.register = function(server, options, next) {
                   image: user.image,
                   firstName: user.firstName,
                   lastName: user.lastName,
-                  dateOfBirth: user.dateOfBirth,
+                  dateOfBirth: newDate(user.dateOfBirth),
                   experience: user.experience || "Not Specified",
                   gender: user.gender,
                   height: user.height || "Not Specified",

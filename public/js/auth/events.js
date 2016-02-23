@@ -38,7 +38,7 @@ $(document).ready(function () {
         timing: $('#addevent [name="time"]').val(),
         date: $('#addevent [name="date"]').val(),
         location: $('#addevent [name="location"]').val(),
-        activity: $('#addevent [name="activity"]').val(),
+        activity: $('#addevent [name="gym-activity"]').val(),
         duration: $('#addevent [name="duration"]').val()
       };
 
@@ -48,7 +48,7 @@ $(document).ready(function () {
         data: newEvent,
         success: function(response){
 
-          var newli = "<div class=\"newBox col-xs-12\" name="+response.ops[0]._id+"><div class=\"col-xs-2 col-md-2 calender\">"+response.ops[0].event_date+"</div><div class=\"col-xs-6 col-md-6 details\"><p>Time:" +response.ops[0].event_time+"</p><p>Workout:"+ response.ops[0].event_type+"</p><p>Location:"+ response.ops[0].event_location+"</p></div><div class=\"col-xs-4 col-md-4 optionbuttons\"><button class=\"btn btn-danger delete-event\" data-id="+response.ops[0]._id+">Delete Session</button></div></div>"
+          var newli = "<div class=\"newBox col-xs-12\" name="+response.ops[0]._id+"><div class=\"col-xs-2 col-md-2 calender\">"+response.ops[0].event_date+"</div><div class=\"col-xs-6 col-md-6 details\"><p>Time:" +response.ops[0].event_time+"</p><p>Duration:"+response.ops[0].event_duration+"</p><p>Workout:"+ response.ops[0].event_type+"</p><p>Location:"+ response.ops[0].event_location+"</p></div><div class=\"col-xs-4 col-md-4 optionbuttons\"><button class=\"btn btn-danger delete-event\" data-id="+response.ops[0]._id+">Delete Session</button></div></div>"
 
           $("div[name=\"my-event-section\"]").append(newli);
           bindDeleteEvent();

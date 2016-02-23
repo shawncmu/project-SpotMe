@@ -17,9 +17,16 @@ h1 {
 }
 
 .centering {
-  width: 600px;
+  width: 400px;
   height: 500px;
   position: absolute;
   margin: 0 auto;
 }
 
+#sign-up-button {
+  width: 100%;
+  margin-top: 10px;
+  background-color: black;
+  color: white;
+  border-color: black;
+}
