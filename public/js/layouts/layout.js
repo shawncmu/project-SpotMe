@@ -14,14 +14,14 @@ $(document).ready(function () {
   var bindTodaySearch = function () {
     $('#today-search').off().on('click', function (e) {
         var date = new Date(Date.now());
-        var dd = date.getDate();
-        var mm = date.getMonth()+1;
-        if(dd<10){dd = '0' + dd};
-        if(mm<10){mm = '0' + mm};
-        var yyyy = date.getFullYear();
-        var today = yyyy+"-"+mm+"-"+dd;
+        // var dd = date.getDate();
+        // var mm = date.getMonth()+1;
+        // if(dd<10){dd = '0' + dd};
+        // if(mm<10){mm = '0' + mm};
+        // var yyyy = date.getFullYear();
+        // var today = yyyy+"-"+mm+"-"+dd;
 
-        $('#searchevent [name="date"]').val(today);
+        $('#searchevent [name="navdate"]').val(date);
         $("#searchevent").submit();
     });
   };

@@ -32,9 +32,15 @@ $(document).ready(function(){
       });
     });
   };
-
+var bindCancel = function () {
+    $('#cancel').off().on('click', function (e) {
+      e.preventDefault();
+      window.location.href = "/profile";
+    });
+  };
   var init = function () {
     bindEditUser();
+    bindCancel();
   };
 
   init();

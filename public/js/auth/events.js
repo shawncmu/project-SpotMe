@@ -80,10 +80,10 @@ $(document).ready(function () {
     $('#searchevent').off().on('submit', function (e) {
       e.preventDefault();
 
-        activity = $('#searchevent [name="activity"]').val();
-        place = $('#searchevent [name="location"]').val();
-        date = $('#searchevent [name="date"]').val();
-        time = $('#searchevent [name="time"]').val();
+        activity = $('#searchevent [name="navactivity"]').val();
+        place = $('#searchevent [name="navlocation"]').val();
+        date = $('#searchevent [name="navdate"]').val();
+        time = $('#searchevent [name="navtime"]').val();
         if(activity == null) {activity = ""};
         if(place == null) {place = ""};
 

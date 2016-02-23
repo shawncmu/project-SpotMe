@@ -34,13 +34,13 @@
         </div>
         <form id="searchevent" class="navbar-form navbar-left">
           <div class="form-group">
-            <input type="date" class="form-control" name="date" placeholder="Date">
+            <input type="date" class="form-control" name="navdate" placeholder="Date">
           </div>
           <div class="form-group">
-            <input type="time" class="form-control" name="time" placeholder="Time">
+            <input type="time" class="form-control" name="navtime" placeholder="Time">
           </div>
           <div class="form-group">
-            <select type="text" class="form-control" name="location" placeholder="Location">
+            <select type="text" class="form-control" name="navlocation" placeholder="Location">
               <option selected disabled>Location</option>
               <% locations.forEach(function (elem, index) { %>
                   <option><%= elem.brand %> <% if (elem.branch != "") { %>- <%= elem.branch %><% } %></option>
@@ -48,7 +48,7 @@
             </select>
           </div>
           <div class="form-group">
-            <select type="text" class="form-control" name="activity" placeholder="Activity">
+            <select type="text" class="form-control" name="navactivity" placeholder="Activity">
               <option selected disabled>Activity</option>
               <option>Chest</option>
               <option>Biceps</option>
