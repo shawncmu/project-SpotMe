@@ -17,6 +17,20 @@ body {
   text-align: center;
 }
 
+.details {
+  line-height: 9px;
+  margin-top: 10px;
+}
+
+.details-time {
+  padding-left: 6px;
+}
+
+.workout-location {
+  margin-left: -10px;
+  font-size: small;
+}
+
 .spotter {
   height: 116px;
   text-align: center;
@@ -75,7 +89,7 @@ body {
 }
 
 .centering-right-top {
-  height: 100%;
+  height: 734px;
   margin: 0 auto;
   margin-top: 20px;
 }
@@ -153,13 +167,23 @@ hr {
 }
 
 .optionbuttons {
-  top: 40px;
+  top: 22px;
   position: relative;
 }
 
 .details-right {
-  line-height: 8px;
+  line-height: 5px;
   position: relative;
-  left: 12px;
+  left: 22px;
   top: 5px;
+  font-size: smaller;
+}
+
+.button-margin {
+  margin-bottom: 10px;
+  width:100%;
+}
+
+.viewprofile {
+  width:100%;
 }
