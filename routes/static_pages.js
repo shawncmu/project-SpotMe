@@ -1,4 +1,4 @@
-var Authenticated = require("./modules/Authenticated.js");
+var Authenticated = require("./modules/authenticated.js");
 
 exports.register = function (server, options, next) {
   server.route([
@@ -16,8 +16,12 @@ exports.register = function (server, options, next) {
       path: '/',
       handler: function(request, reply) {
         Authenticated(request, function (result) {
-          var data = result; // need to have authenticated inorder to show signout button
-          reply.view('static_pages/home', data).code(200);
+          if (result.authenticated) {
+            reply.redirect("/profile").code(307);
+          } else {
+              var data = result; // need to have auhtenticated inorder to show signout button
+              reply.view('static_pages/home', data).code(200);
+          }
         });
       }
     }
