@@ -1,0 +1,24 @@
+<% if (user) { %>
+  <h1>Search Results</h1>
+  <ul>
+    <% events.forEach(function(elem,index) { %>
+      <li><%= elem.creator_id %></li>
+      <li><%= elem.partner_id %></li>
+      <li><%= elem.event_time %></li>
+      <li><%= elem.event_type %></li>
+      <li><button class="btn btn-warning joinevent" data-id=<%= elem._id %>>Join</button></li>
+    <% }) %>
+  </ul>
+<!--
+<h1>New Search</h1>
+  <form class="searchevent2">
+    <input type="text" class="form-control" name="activity" placeholder="Activity">
+    <input type="text" class="form-control" name="location" placeholder="Location">
+    <input type="text" class="form-control" name="dateTime" placeholder="Date">
+    <input type="submit" name="searchevent" class="btn btn-default">
+  </form>-->
+<% } else { %>
+  <p>user does not exist</p>
+<% } %>
+
+<script src="/public/js/auth/events.js"></script>
