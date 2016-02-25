@@ -1,0 +1,34 @@
+body {
+  /*background-image: url("http://arsagfitness.com/wp-content/uploads/2015/10/crossfit-gym-background-ftkh9nom.jpg");*/
+  background-image: url("http://bgfons.com/upload/stone_texture566.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+img {
+  height: 200px;
+  width: 200px;
+}
+
+.container-fluid {
+  text-align: center;
+}
+
+.details {
+  display: inline-block;
+  list-style-type: none;
+  color: white;
+  font-size: 150%;
+}
+
+.transparent{
+  background:rgba(255,255,255,0.7);
+  border-radius: 10px;
+}
+
+.results {
+  color: white;
+  font-size: 200%;
+}

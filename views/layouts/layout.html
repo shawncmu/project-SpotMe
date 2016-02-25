@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Hapi Template</title> <!-- CHANGE-ME -->
+  <title>Spot Me - Welcome</title>
 
   <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -12,13 +12,86 @@
   <link rel="stylesheet" href="/public/css/layouts/layout.css">
 </head>
 <body>
-  {{#if authenticated}}
-    <button id="signout-btn" class="btn btn-default">Sign Out</button>
-  {{else}}
-    <a href="/signup" class="btn btn-default">Sign Up</a>
-    <a href="/signin" class="btn btn-default">Sign In</a>
-  {{/if}}
+  <nav class="navbar navbar-inverse">
 
-  {{{content}}}
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SpotMe</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <% if (authenticated) { %>
+        <div class="navbar-form navbar-left">
+          <div class="form-group">
+            <button class="btn btn-default form-control" id="today-search">Today's Spots</button>
+          </div>
+        </div>
+        <form id="searchevent" class="navbar-form navbar-left">
+          <div class="form-group">
+            <input type="date" class="form-control" name="navdate" placeholder="Date">
+          </div>
+          <div class="form-group">
+            <input type="time" class="form-control" name="navtime" placeholder="Time">
+          </div>
+          <div class="form-group">
+            <select type="text" class="form-control" name="navlocation" placeholder="Location">
+              <option selected disabled>Location</option>
+              <% locations.forEach(function (elem, index) { %>
+                  <option><%= elem.brand %> <% if (elem.branch != "") { %>- <%= elem.branch %><% } %></option>
+              <% }); %>
+            </select>
+          </div>
+          <div class="form-group">
+            <select type="text" class="form-control" name="navactivity" placeholder="Activity">
+              <option selected disabled>Activity</option>
+              <option>Chest</option>
+              <option>Biceps</option>
+              <option>Triceps</option>
+              <option>Shoulders</option>
+              <option>Upper Back</option>
+              <option>Lower Back</option>
+              <option>Legs</option>
+            </select>
+          </div>
+          <button type="submit" class="form-control" name="searchevent" class="btn btn-default">Search</button>
+        </form>
+      <% } %>
+        <ul class="nav navbar-nav navbar-right">
+          <% if (authenticated) { %>
+            <li><a href="/profile"> <img src=<%= image %> class="img-rounded" id="nav-image"> <%= name %></a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/editprofile">Edit Profile</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#" id="signout-btn">Sign Out</a></li>
+              </ul>
+            </li>
+          <% } else { %>
+              <form id="signin" class="navbar-form">
+                <div class="form-group">
+                  <input type="text" class="form-control" name="email" placeholder="username">
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" name="password" placeholder="password">
+                </div>
+                <div class="form-group">
+                  <input type="submit" class="form-control" name="Sign in" class="btn btn-default">
+                </div>
+              </form>
+              <div id="signin-form-message"></div>
+          <% } %>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <%- content %>
 </body>
 </html>

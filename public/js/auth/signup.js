@@ -5,9 +5,18 @@ $(document).ready(function(){
       $('#signup-form-message').text('');
 
       var user = {
-        email   : $('#signup [name="email"]').val(),
-        username: $('#signup [name="username"]').val(),
-        password: $('#signup [name="password"]').val()
+        firstName: $('#firstname').val(),
+        lastName: $('#lastname').val(),
+        email   : $('#email').val(),
+        password: $('#password').val(),
+        dateOfBirth: $('#dob').val(),
+        gender: $('#genderM').val() || $('#genderF').val(),
+        experience: "",
+        height: "",
+        weight: "",
+        memberships: [],
+        rating: 0,
+        image: "http://i1.wp.com/www.techrepublic.com/bundles/techrepubliccore/images/icons/standard/icon-user-default.png"
       };
 
       $.ajax({
@@ -15,7 +24,9 @@ $(document).ready(function(){
         url: '/api/signup',
         data: user,
         success: function (response) {
-          window.location.href = "/signin?message=Account Created, Please Sign In";
+          $('#signin [name="email"]').val(user.email);
+          $('#signin [name="password"]').val(user.password);
+          $("#signin").submit();
         },
         error: function (response) {
           console.log(response);

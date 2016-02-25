@@ -1,0 +1,189 @@
+body {
+  background-image: url("http://bgfons.com/upload/stone_texture566.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+
+.calender {
+  background-image: url("http://www.markinsummerlongago.com/imgs/events.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-y: 20px;
+  height: 116px;
+  padding: 0;
+  text-align: center;
+}
+
+.details {
+  line-height: 9px;
+  margin-top: 10px;
+}
+
+.details-time {
+  padding-left: 6px;
+}
+
+.workout-location {
+  margin-left: -10px;
+  font-size: small;
+}
+
+.spotter {
+  height: 116px;
+  text-align: center;
+}
+
+.spotter > img {
+  max-height: 110px;
+  max-width: 110px;
+  margin-top:5px;
+  position: relative;
+  left: -22px;
+}
+
+.date-style {
+  top: -5px;
+  position: relative;
+  margin-bottom: 0px;
+}
+
+.day-style {
+  margin: 0px;
+  top: 20px;
+  position: relative;
+}
+
+.year-style {
+  position: relative;
+  top: 20px;
+}
+
+.transparent{
+  background:rgba(255,255,255,0.7);
+  border-radius: 10px;
+}
+
+.centering {
+  width:400px;
+  height: 100%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.centering-middle-top {
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.centering-middle-bottom {
+  height: 300px;
+  margin: auto;
+  margin-top: 20px;
+}
+.scroller {
+  height: 80%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.centering-right-top {
+  height: 734px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.centering-right-bottom {
+  height: 100%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.personal-stats {
+  width:300px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 5px;
+  background: white;
+  margin: 10px auto;
+}
+
+.personal-stats-holder {
+  margin: 0 auto;
+}
+
+#mainImg {
+  max-height: 300px;
+  max-width: 300px;
+  margin: 10px;
+  border: 8px solid white;
+}
+
+#name-header {
+  text-align: center;
+}
+
+.heading {
+  text-align: center;
+  color: white;
+}
+
+input {
+  background-color: transparent;
+}
+
+select[name="gym-activity"] {
+  height: 140px;
+  overflow: hidden;
+}
+
+div[name="gym-location"] {
+  top: -73px;
+}
+
+input[name="addevent"] {
+  width: 100%;
+}
+
+.create-event {
+  top: -70px;
+}
+
+.specs {
+  background-color: transparent;
+  border-color: white;
+}
+
+.newBox {
+  margin-bottom: 5px;
+  border: 3px solid white;
+  border-radius: 10px;
+  height: 126px;
+}
+
+hr {
+  margin-bottom: 2px;
+}
+
+.optionbuttons {
+  top: 22px;
+  position: relative;
+}
+
+.details-right {
+  line-height: 5px;
+  position: relative;
+  left: 22px;
+  top: 5px;
+  font-size: smaller;
+}
+
+.button-margin {
+  margin-bottom: 10px;
+  width:100%;
+}
+
+.viewprofile {
+  width:100%;
+}

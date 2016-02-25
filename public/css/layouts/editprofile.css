@@ -1,0 +1,34 @@
+body {
+  background-image: url("http://bgfons.com/upload/stone_texture566.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+#main-image {
+  max-height: 300px;
+  max-width: 300px;
+  margin: 10px;
+  border: 8px solid orange;
+  border-radius: 20px;
+}
+
+.image-div {
+  text-align: center;
+}
+
+.transparent{
+  background:rgba(255,255,255,0.7);
+  border-radius: 10px;
+}
+
+.centering {
+  width:600px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.bottom-box {
+  padding-bottom: 20px;
+}

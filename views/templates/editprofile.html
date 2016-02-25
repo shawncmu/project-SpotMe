@@ -1,0 +1,84 @@
+<% if (user) { %>
+
+  <div class="container-fluid transparent centering">
+    <div class="row ">
+      <div class="col-xs-12 image-div">
+        <h1>My Profile</h1>
+        <img id="main-image"src=<%= user.image %>>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 bottom-box">
+        <form id="edituser">
+          <div class="form-group col-xs-12">
+            <label for="image">Image URL</label>
+            <input type="text" class="form-control" name="image" placeholder="http://spotme.com" value=<%= user.image %>>
+          </div>
+          <div class="form-group col-xs-6">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" name="firstName" placeholder="First Name" value=<%= user.firstName %>>
+          </div>
+          <div class="form-group col-xs-6">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" name="lastName" placeholder="Last Name" value=<%= user.lastName %>>
+          </div>
+          <div class="form-group col-xs-12">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="email" placeholder="Email" value=<%= user.email %>>
+          </div>
+          <div class="form-group col-xs-6">
+            <label for="dob">Date of Birth</label>
+            <input type="date" class="form-control" name="dob" placeholder="Date of Birth" value=<%= user.dateOfBirth %>>
+          </div>
+          <div class="form-group col-xs-6">
+            <label for="gender">Gender</label>
+            <!-- <input type="radio" name="gender" placeholder="Gender" value=<%= user.gender %>> -->
+            <select class="form-control" name="gender" value=<%= user.gender %>>
+              <option>Male</option>
+              <option>Female</option>
+            </select>
+          </div>
+          <div class="form-group col-xs-6">
+            <label for="height">Height</label>
+            <input type="number" class="form-control" name="height" placeholder="Height in cm" value=<%= user.height %>>
+          </div>
+          <div class="form-group col-xs-6">
+            <label for="weight">Weight</label>
+            <input type="number" class="form-control" name="weight" placeholder="Weight in lbs" value=<%= user.weight %>>
+          </div>
+          <div class="form-group col-xs-6">
+            <label for="experience">Experience</label>
+            <!-- <input type="text" name="experience" placeholder="Experience" value=<%= user.experience %>> -->
+            <select class="form-control" name="experience" value=<%= user.experience %>>
+              <option>Beginner</option>
+              <option>Intermediate</option>
+              <option>Advanced</option>
+            </select>
+          </div>
+          <div class="form-group col-xs-6">
+            <label for="memberships">Gym Memberships</label>
+            <input type="text" class="form-control" name="memberships" placeholder="Memberships" value=<%= user.memberships %>>
+          </div>
+          <div class="form-group col-xs-12">
+            <label for="password">Verify Password</label>
+            <input type="text" class="form-control" name="password" placeholder="Please verify password">
+          </div>
+          <div class="form-group col-xs-6">
+            <button id="cancel" class="btn btn-default" value="Cancel" style="width:100%;">Cancel</button>
+          </div>
+          <div class="form-group col-xs-6">
+            <input type="submit" name="edituser" class="btn btn-default" value="Update" style="width:100%;">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+<% } else { %>
+  <p>user does not exist</p>
+<% } %>
+
+<script src="/public/js/auth/editprofile.js"></script>
+<script src="/public/js/auth/events.js"></script>
+<link rel="stylesheet" href="/public/css/layouts/editprofile.css">

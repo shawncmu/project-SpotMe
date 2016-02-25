@@ -1,0 +1,270 @@
+<% if (user) { %>
+  <div class="container-fluid">
+
+      <div class="col-xs-12 col-md-4">
+      <div class="transparent centering">
+        <div id="name-header">
+          <p><%= user.firstName %> <%= user.lastName %></p>
+        </div>
+        <div style="text-align:center">
+          <img src=<%= user.image %> class="img-rounded" id="mainImg">
+        </div>
+<!--         <div>
+          <p style="text-align:center">Rating: <%= user.rating %></p>
+        </div> -->
+        <div class="personal-stats-holder>">
+          <div class="personal-stats"><b>Email</b><br> <%= user.email %></div>
+          <div class="personal-stats"><b>Date of Birth</b><br> <%= user.dateOfBirth.getDate() %>-<%= user.dateOfBirth.getMonth()+1 %>-<%= user.dateOfBirth.getFullYear() %></div>
+          <div class="personal-stats"><b>Gender</b><br> <%= user.gender %></div>
+          <div class="personal-stats"><b>Height</b><br> <%= user.height %></div>
+          <div class="personal-stats"><b>Weight</b><br> <%= user.weight %></div>
+          <div class="personal-stats"><b>Experience</b><br> <%= user.experience %></div>
+          <div class="personal-stats"><b>Gym Memberships</b><br> <%= user.memberships %></div>
+        </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-md-4">
+
+        <div class="row transparent centering-middle-top">
+          <!-- <div class="transparent centering-middle-top -->
+            <p class="heading">New Workout Session</p>
+            <hr>
+            <form id="addevent">
+              <div class="form-group col-xs-6">
+                <label for="date">Workout Date</label>
+                <input type="date" class="form-control specs" name="date" placeholder="Date">
+              </div>
+              <div class="form-group col-xs-6">
+                <label for="time">Workout Time</label>
+                <input type="time" class="form-control specs" name="time" placeholder="Time">
+              </div>
+              <div class="form-group col-xs-6">
+                <label for="duration">Workout Duration</label>
+                <select type="text" class="form-control specs" name="duration" placeholder="Duration">
+                  <option selected disabled>Duration</option>
+                  <option>30 mins</option>
+                  <option>45 mins</option>
+                  <option>1 hour</option>
+                  <option>1.5 hours</option>
+                  <option>2 hours</option>
+                  <option>over 2 hours</option>
+                </select>
+              </div>
+              <div class="form-group col-xs-6">
+                <label for="gym-activity">Workout (select multiple)</label>
+                <select type="text" multiple class="form-control specs" name="gym-activity" placeholder="Activity">
+                  <option>Chest</option>
+                  <option>Biceps</option>
+                  <option>Triceps</option>
+                  <option>Shoulders</option>
+                  <option>Upper Back</option>
+                  <option>Lower Back</option>
+                  <option>Legs</option>
+                </select>
+              </div>
+              <div name="gym-location" class="form-group col-xs-6">
+                <label for="location">Gym Location</label>
+                <select type="text" class="form-control specs" name="location" placeholder="Location">
+                  <option selected disabled>Location</option>
+                  <% locations.forEach(function (elem, index) { %>
+                    <% if (elem.branch) { %>
+                      <option><%= elem.brand %> - <%= elem.branch %></option>
+                    <% } %>
+                  <% }); %>
+                  </select>
+              </div>
+              <div class="form-group col-xs-12 create-event">
+                <input type="submit" name="addevent" class="btn btn-default" value="Create New Session">
+              </div>
+            </form>
+          <!-- </div> -->
+        </div>
+
+        <div class="row transparent centering-middle-bottom">
+          <!-- <div class="transparent centering-middle-bottom"> -->
+            <p class="heading">My Workout Sessions</p>
+            <hr>
+            <div name="my-event-section" class="scroller">
+              <% myEvents.forEach(function(elem,index) { %>
+                <div class="newBox col-xs-12" name=<%= elem._id %>>
+                  <div class="col-xs-2 col-md-2 calender">
+                    <div class="year-style"><%= new Date(elem.event_date).getFullYear() %></div>
+                    <h1 class="day-style"><%= new Date(elem.event_date).getDate() %></h1><br>
+                    <% if (new Date(elem.event_date).getMonth()===0) { %><p class="date-style">Jan</p><br> <% } %>
+                    <% if (new Date(elem.event_date).getMonth() ===1) { %><p class="date-style">Feb</p><br> <% } %>
+                    <% if (new Date(elem.event_date).getMonth() ===2) { %><p class="date-style">Mar</p><br> <% } %>
+                    <% if (new Date(elem.event_date).getMonth() ===3) { %><p class="date-style">Apr</p><br> <% } %>
+                    <% if (new Date(elem.event_date).getMonth() ===4) { %><p class="date-style">May</p><br> <% } %>
+                    <% if (new Date(elem.event_date).getMonth() ===5) { %><p class="date-style">Jun</p><br> <% } %>
+                    <% if (new Date(elem.event_date).getMonth() ===6) { %><p class="date-style">Jul</p><br> <% } %>
+                    <% if (new Date(elem.event_date).getMonth() ===7) { %><p class="date-style">Aug</p><br> <% } %>
+                    <% if (new Date(elem.event_date).getMonth() ===8) { %><p class="date-style">Sep</p><br> <% } %>
+                    <% if (new Date(elem.event_date).getMonth() ===9) { %><p class="date-style">Oct</p><br> <% } %>
+                    <% if (new Date(elem.event_date).getMonth() ===10) { %><p class="date-style">Nov</p><br> <% } %>
+                    <% if (new Date(elem.event_date).getMonth() ===11) { %><p class="date-style">Dec</p><br> <% } %>
+                  </div>
+                  <div class="col-xs-6 col-md-6 details">
+                    <div class="row">
+                      <div class="col-xs-6 details-time">
+                        <p><strong>Time</strong></p>
+                        <p><%= elem.event_time %></p>
+                      </div>
+                      <div class="col-xs-6">
+                        <p><strong>Duration</strong><p>
+                        <p><%= elem.event_duration %></p>
+                      </div>
+                    </div>
+                    <div class="row workout-location">
+                      <p><strong>Workout</strong></p>
+                      <p><%= elem.event_type %></p>
+                      <p><strong>Location</strong></p>
+                      <p><%= elem.event_location %></p>
+                  </div>
+                  </div>
+                  <div class="col-xs-4 col-md-4 optionbuttons">
+                     <button class="btn btn-danger delete-event" data-id=<%= elem._id %>>Delete Session</button>
+                  </div>
+                </div>
+              <% }) %>
+            </div>
+          <!-- </div> -->
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-4">
+      <div class="row transparent centering-right-top">
+      <p class="heading">My Joined Events</p>
+      <hr>
+          <% joinedEvents.forEach(function(elem,index) { %>
+              <div class="newBox col-xs-12" name=<%= elem._id %>>
+                <div class="col-xs-2 col-md-2 spotter">
+                  <% if (user._id.toString() === elem.creator_id.toString()) { %>
+                    <img class="img-rounded" src=<%= elem.partner_image %>>
+                    <!-- <p>Rating: <%= elem.partner_rating %></p> -->
+                  <% } else { %>
+                    <img class="img-rounded" src=<%= elem.creator_image %>>
+                    <!-- <p>Rating: <%= elem.creator_rating %></p> -->
+                  <% } %>
+                </div>
+                <div class="col-xs-6 col-md-6 details-right .scroller">
+                  <% if (user._id.toString() === elem.creator_id.toString()) { %>
+                    <p><strong><%= elem.partner_name %></strong></p>
+                  <% } else { %>
+                    <p><strong><%= elem.creator_name %></strong></p>
+                  <% } %>
+                  <% if (elem.event_date.getDay()===0) { var day = "Sun"} %>
+                  <% if (elem.event_date.getDay()===1) { var day = "Mon"} %>
+                  <% if (elem.event_date.getDay()===2) { var day = "Tue"} %>
+                  <% if (elem.event_date.getDay()===3) { var day = "Wed"} %>
+                  <% if (elem.event_date.getDay()===4) { var day = "Thu"} %>
+                  <% if (elem.event_date.getDay()===5) { var day = "Fri"} %>
+                  <% if (elem.event_date.getDay()===6) { var day = "Sat"} %>
+                  <% if (elem.event_date.getMonth()===0) { var month = "Jan" } %>
+                  <% if (elem.event_date.getMonth()===1) { var month = "Feb" } %>
+                  <% if (elem.event_date.getMonth()===2) { var month = "Mar" } %>
+                  <% if (elem.event_date.getMonth()===3) { var month = "Apr" } %>
+                  <% if (elem.event_date.getMonth()===4) { var month = "May" } %>
+                  <% if (elem.event_date.getMonth()===5) { var month = "Jun" } %>
+                  <% if (elem.event_date.getMonth()===6) { var month = "Jul" } %>
+                  <% if (elem.event_date.getMonth()===7) { var month = "Aug" } %>
+                  <% if (elem.event_date.getMonth()===8) { var month = "Sep" } %>
+                  <% if (elem.event_date.getMonth()===9) { var month = "Oct" } %>
+                  <% if (elem.event_date.getMonth()===10) { var month = "Nov" } %>
+                  <% if (elem.event_date.getMonth()===11) { var month = "Dec" } %>
+                  <p><strong>Date:</strong> <%= day %> <%= elem.event_date.getDate() %> <%= month %> <%= elem.event_date.getFullYear() %></p>
+                  <p><strong>Time:</strong> <%= elem.event_time %></p>
+                  <p><strong>Duration:</strong> <%= elem.event_duration %></p>
+                  <p><strong>Workout:</strong></p>
+                  <p><%= elem.event_type %></p>
+                  <p><strong>Location:</strong></p>
+                  <p><%= elem.event_location %></p>
+                </div>
+                <div class="col-xs-4 col-md-4 optionbuttons">
+                  <% if (user._id.toString() === elem.creator_id.toString()) { %>
+                    <button class="btn btn-danger delete-event button-margin" data-id=<%= elem._id %>>Delete Session</button>
+                    <button class="btn btn-warning viewprofile" data-id=<%= elem.partner_id %>>View Profile</button>
+                  <% } else { %>
+                        <button class="btn btn-danger unjoin-event button-margin" data-id=<%= elem._id %>>Cancel Spot</button>
+                        <button class="btn btn-warning viewprofile" data-id=<%= elem.creator_id %>>View Profile</button>
+                  <% } %>
+                </div>
+              </div>
+          <% }) %>
+        </div>
+
+<!--         <div class="row transparent centering-right-top">
+          <p class="heading">Pending Rating</p>
+        </div>
+      </div> -->
+
+        <div class="modal fade" id="delete-modal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                  <h3>Are you sure you want to delte this session?</h3>
+                  <button class="btn btn-danger" id="confirm-delete-event">Confirm Delete</button>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="unjoin-modal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                  <h3>Are you sure you want to leave this session?</h3>
+                  <button class="btn btn-danger" id="confirm-unjoin-event">Leave Session</button>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="modal fade" id="view-profile">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                  <div class="col-xs-6 pull-left">
+                  <img id="image-box" src="http://i1.wp.com/www.techrepublic.com/bundles/techrepubliccore/images/icons/standard/icon-user-default.png">
+                  </div>
+                  <div class="col-xs-6 pull-right">
+                  <ul>
+                    <li name="dateofbirth"></li>
+                    <li name="experience"></li>
+                    <li name="gender"></li>
+                    <li name="height"></li>
+                    <li name="weight"></li>
+                    <li name="memberships"></li>
+                  </ul>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+  <% } else { %>
+    <p>user does not exist</p>
+  <% } %>
+
+<script src="/public/js/auth/events.js"></script>
+<script src="/public/js/auth/profile.js"></script>
+<link rel="stylesheet" href="/public/css/layouts/profile.css">

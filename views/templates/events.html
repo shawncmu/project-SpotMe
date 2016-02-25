@@ -1,0 +1,71 @@
+<% if (user) { %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+        <p class="results">Showing Results For</p>
+        <ul>
+          <li class="details">Date: <span style="color:orange;"><%= query.dateResult %></span>&nbsp|&nbsp</li>
+          <li class="details">Time: <span style="color:orange;"><%= query.timeResult %></span>&nbsp|&nbsp</li>
+          <li class="details">Location: <span style="color:orange;"><%= query.locationResult %></span>&nbsp|&nbsp</li>
+          <li class="details">Activity: <span style="color:orange;"><%= query.activityResult %></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<div class="container-fluid">
+  <div class="row">
+  <% events.forEach(function(elem,index) { %>
+    <div class="col-xs-6 col-md-2">
+      <div class="thumbnail transparent">
+        <img class="img-rounded" src=<%= elem.creator_image %>>
+        <div class="caption">
+          <h3><%= elem.creator_name %></h3>
+          <p>Rating: <%= elem.creator_rating %></p>
+          <p>Date: <%= elem.event_date %></p>
+          <p>Time: <%= elem.event_time %></p>
+          <p>Workout: <%= elem.event_type %></p>
+          <p>Location: <%= elem.event_location %></p>
+          <p><% if (user._id.toString() != elem.creator_id.toString()) { %><button class="btn btn-warning joinevent" data-id=<%= elem._id %>>Join</button><% } %> <button class="btn btn-danger viewprofile" data-id=<%= elem.creator_id %>>View Profile</button></p>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</div>
+
+<div class="modal fade" id="view-profile">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+          <div class="col-xs-6 pull-left">
+          <img id="image-box" src="http://i1.wp.com/www.techrepublic.com/bundles/techrepubliccore/images/icons/standard/icon-user-default.png">
+          </div>
+          <div class="col-xs-6 pull-right">
+          <ul>
+            <li name="dateofbirth"></li>
+            <li name="experience"></li>
+            <li name="gender"></li>
+            <li name="height"></li>
+            <li name="weight"></li>
+            <li name="memberships"></li>
+          </ul>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% } else { %>
+  <p>user does not exist</p>
+<% } %>
+
+<script src="/public/js/auth/events.js"></script>
+<link rel="stylesheet" href="/public/css/layouts/events.css">
