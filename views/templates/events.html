@@ -1,0 +1,65 @@
+<% if (user) { %>
+  <h1>Search Results</h1>
+  <ul>
+    <% events.forEach(function(elem,index) { %>
+      <li><%= elem.creator_id %></li>
+      <li><%= elem.partner_id %></li>
+      <li><%= elem.event_time %></li>
+      <li><%= elem.event_type %></li>
+      <li><% if (user._id.toString() != elem.creator_id.toString()) { %><button class="btn btn-warning joinevent" data-id=<%= elem._id %>>Join</button><% } %> <button class="btn btn-danger viewprofile" data-id=<%= elem.creator_id %>>View Profile</button></li>
+    <% }) %>
+  </ul>
+<!--
+<h1>New Search</h1>
+  <form class="searchevent2">
+    <input type="text" class="form-control" name="activity" placeholder="Activity">
+    <input type="text" class="form-control" name="location" placeholder="Location">
+    <input type="text" class="form-control" name="dateTime" placeholder="Date">
+    <input type="submit" name="searchevent" class="btn btn-default">
+  </form>-->
+
+<!-- <div class="modal fade" id="event-joined">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Joined Event</h4>
+        </div>
+        <div class="modal-body">
+          <p>You have successfull joined the event</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+<div class="modal fade" id="view-profile">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+          <ul>
+            <li name="dateofbirth"></li>
+            <li name="experience"></li>
+            <li name="gender"></li>
+            <li name="height"></li>
+            <li name="weight"></li>
+            <li name="memberships"></li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% } else { %>
+  <p>user does not exist</p>
+<% } %>
+
+<script src="/public/js/auth/events.js"></script>

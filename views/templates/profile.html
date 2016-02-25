@@ -1,0 +1,92 @@
+<% if (user) { %>
+  <h1>Current User: <%= user.email %></h1>
+  <h1>My created events</h1>
+    <div name="my-event-section">
+      <% myEvents.forEach(function(elem,index) { %>
+        <ul name=<%= elem._id %>>
+            <li><%= elem.creator_id %></li>
+            <li><%= elem.partner_id %></li>
+            <li><%= elem.event_time %></li>
+            <li><%= elem.event_type %></li>
+            <li><button class="btn btn-danger delete-event" data-id=<%= elem._id %>>Delete Session</button></li>
+        </ul>
+      <% }) %>
+    </div>
+
+<h1>ADD Event</h1>
+  <form id="addevent">
+    <input type="text" name="time" placeholder="time">
+    <input type="text" name="event" placeholder="event">
+    <input type="submit" name="addevent" class="btn btn-default">
+  </form>
+<h1>My Joined Events</h1>
+    <% joinedEvents.forEach(function(elem,index) { %>
+      <ul name=<%= elem._id %>>
+        <li><%= elem.creator_id %></li>
+        <li><%= elem.partner_id %></li>
+        <li><%= elem.event_time %></li>
+        <li><%= elem.event_type %></li>
+        <% if (user._id.toString() === elem.creator_id.toString()) { %>
+          <li><button class="btn btn-danger delete-event" data-id=<%= elem._id %>>Delete Session</button></li>
+        <% } else { %>
+              <li><button class="btn btn-warning unjoin-event" data-id=<%= elem._id %>>Un-Join Session</button></li>
+        <% } %>
+      </ul>
+    <% }) %>
+<!--<h1>Search</h1>
+  <form id="searchevent">
+    <input type="text" name="dateTime" placeholder="Date">
+    <input type="text" name="location" placeholder="Location">
+    <input type="text" name="activity" placeholder="Activity">
+    <input type="submit" name="searchevent" class="btn btn-default">
+  </form>
+-->
+
+<div class="modal fade" id="delete-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+          <h3>Are you sure you want to delte this session?</h3>
+          <button class="btn btn-danger" id="confirm-delete-event">Confirm Delete</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade" id="unjoin-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+          <h3>Are you sure you want to leave this session?</h3>
+          <button class="btn btn-danger" id="confirm-unjoin-event">Leave Session</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+<% } else { %>
+  <p>user does not exist</p>
+<% } %>
+
+<script src="/public/js/auth/events.js"></script>
+<script src="/public/js/auth/profile.js"></script>

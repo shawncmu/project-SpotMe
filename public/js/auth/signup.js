@@ -6,8 +6,15 @@ $(document).ready(function(){
 
       var user = {
         email   : $('#signup [name="email"]').val(),
-        username: $('#signup [name="username"]').val(),
-        password: $('#signup [name="password"]').val()
+        firstName: $('#signup [name="firstname"]').val(),
+        lastName: $('#signup [name="lastname"]').val(),
+        gender: $('#signup [name="gender"]').val(),
+        password: $('#signup [name="password"]').val(),
+        dateOfBirth: $('#signup [name="dob"]').val(),
+        experience: "",
+        height: "",
+        weight: "",
+        memberships: ""
       };
 
       $.ajax({
@@ -15,7 +22,10 @@ $(document).ready(function(){
         url: '/api/signup',
         data: user,
         success: function (response) {
-          window.location.href = "/signin?message=Account Created, Please Sign In";
+          //display welcome modal
+        $('#signin [name="email"]').val(user.email);
+        $('#signin [name="password"]').val(user.password);
+        $("#signin").submit();
         },
         error: function (response) {
           console.log(response);
